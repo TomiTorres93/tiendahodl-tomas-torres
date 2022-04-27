@@ -1,5 +1,13 @@
+@import './components/header/Navbar.css';
+
+
+
 .App {
   text-align: center;
+}
+
+body {
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -35,4 +43,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.hide {
+  display: none;
 }

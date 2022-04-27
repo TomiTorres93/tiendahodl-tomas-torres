@@ -1,0 +1,60 @@
+
+nav {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.5rem;
+    font-size: 0.6rem;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.logoIcon {
+    position: fixed;
+    color: rgb(120,168,141);
+    top: 0.5rem;
+    left: 1rem;
+    height: 4rem;
+}
+
+
+.menu-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    text-decoration: none;
+    align-items: left;
+}
+
+
+.active {
+    background-color: rgb(120,168,141);
+    color: white;
+}
+
+.menu-item {
+    font-family: 'Roboto Slab', serif;
+    font-weight: lighter;
+    padding: 0.5rem 1rem;
+    color: white;
+    margin: 0rem 0.5rem;
+    list-style: none;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+
+.menu-item:hover {
+    background-color: rgb(120,168,141);
+    color: white;
+}
+
+
+
+

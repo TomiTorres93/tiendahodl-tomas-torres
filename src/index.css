@@ -5,9 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+    background-color: #282c34;
+  
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+.borde1 {
+  border-left: 3px solid #795282;
+}
+
+.borde2 {
+  border-left: 3px solid rgb(221, 217, 164);
+}
+
+.borde3 {
+  border-left: 3px solid rgb(164, 198, 221)
+}
+
+.borde4 {
+  border-left: 3px solid rgb(221, 164, 164)
+}
+
+.borde5 {
+  border-left: 3px solid #78a88d;
 }

@@ -1,0 +1,25 @@
+@media only screen and (min-width: 100px) and  (max-width: 600px) {
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        top: 0rem;
+        width: 100%;
+        font-size: 0.8rem;
+        transition: 0.5s all ease-in-out;    
+    }
+
+    .menu-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+        text-decoration: none;
+        align-items: center;
+    }
+    
+    .hide {
+        display: none;
+    }
+}
