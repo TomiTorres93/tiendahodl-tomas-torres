@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/tiendahodl-tomas-torres/static/css/main.949a275e.css",
+    "main.js": "/tiendahodl-tomas-torres/static/js/main.87faf715.js",
+    "static/js/787.592a0323.chunk.js": "/tiendahodl-tomas-torres/static/js/787.592a0323.chunk.js",
+    "static/media/logohodl.png": "/tiendahodl-tomas-torres/static/media/logohodl.8872c8706ef94c09c353.png",
+    "static/media/logo.svg": "/tiendahodl-tomas-torres/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/tiendahodl-tomas-torres/index.html",
+    "main.949a275e.css.map": "/tiendahodl-tomas-torres/static/css/main.949a275e.css.map",
+    "main.87faf715.js.map": "/tiendahodl-tomas-torres/static/js/main.87faf715.js.map",
+    "787.592a0323.chunk.js.map": "/tiendahodl-tomas-torres/static/js/787.592a0323.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.949a275e.css",
+    "static/js/main.87faf715.js"
+  ]
+}
