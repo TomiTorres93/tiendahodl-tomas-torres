@@ -31,10 +31,24 @@ nav {
     align-items: left;
 }
 
+.logoCarrito {
+    height: 2.5rem;
+    width: 2.5rem;
+    filter: invert(1);
+    position: absolute;
+    right: 2rem;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+}
+
+.logoCarrito:hover {
+    transform: rotate(10deg);
+    filter: invert(0.6);
+}
 
 .active {
-    background-color: rgb(120,168,141);
-    color: white;
+    background-color: white;
+    color: rgb(120,168,141);
 }
 
 .menu-item {
@@ -51,8 +65,9 @@ nav {
 
 
 .menu-item:hover {
-    background-color: rgb(120,168,141);
-    color: white;
+    background-color: white;
+    color: black ;
+    font-weight: 400;
 }
 
 
