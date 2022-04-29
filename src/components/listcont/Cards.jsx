@@ -21,5 +21,4 @@ function Card({id, clase, img, producto, descripcion, precio}) {
   </div>
     ); }
 
-
 export default Card;
