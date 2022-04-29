@@ -19,9 +19,6 @@ function Card({id, clase, img, producto, descripcion, precio}) {
         <p className="cardDescripcion">{descripcion}</p>
         {/* <p className="cardPrecio">{precio}</p>  */}
   </div>
-
-
-
     ); }
 
 
