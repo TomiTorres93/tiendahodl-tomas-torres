@@ -32,3 +32,118 @@ transform: translateY(5px);}
     filter: blur(0);
     animation: none;
 }
+
+.itemsCont {
+    padding: 0rem 3rem;
+    margin-bottom: 10rem;
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.cardcont {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 260px;
+    height: fit-content;
+    padding: 0rem 0rem 2rem 0rem;
+    color: white;
+    margin: 0.5rem;
+    justify-content:space-between ;
+    border-radius: 20px;
+    transition: 0.5s all ease-in-out;
+    opacity: 75%;
+    background-color: rgb(77, 77, 77);
+    cursor: pointer;
+}
+
+.cardcont:hover {
+    opacity: 100%
+}
+
+.cardcont2 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 260px;
+    height: fit-content;
+    padding: 0rem 0rem 2rem 0rem;
+    color: white;
+    margin: 0.5rem;
+    justify-content:space-between ;
+    border-radius: 20px;
+    transition: 0.5s all ease-in-out;
+    opacity: 100%;
+    cursor: pointer;
+    background-color: rgb(77, 77, 77);
+    box-shadow: 0px 0px 15px  #dcffee;
+}
+
+.cardimg {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px 20px 0px 0px;
+    transition: 0.2s all ease-in-out;
+}
+
+.cardimg:hover {
+    height: 285px;
+}
+
+.cardTitulo {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    margin: 0.5rem 0rem;
+    padding: 0rem 2rem;
+
+}
+
+.cardDescripcion {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0rem 2rem;
+}
+
+.cardPrecio {
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+    padding: 0rem 2rem;
+
+}
+
+.cardPrecio:hover {
+    background-color: rgb(82, 82, 82);
+
+}
+
+.backold {
+    background-color: rgb(211, 186, 78);
+}
+
+.backeip {
+    background-color: rgb(192, 104, 104);
+}
+
+.backethath {
+    background-color: rgb(148, 130, 180);
+}
+
+.backcake{
+    background-color: rgba(106, 136, 145);
+}
+
+.backmeta {
+    background-color: rgb(235, 178, 93);
+}

@@ -1,0 +1,19 @@
+.titulo {
+    margin-top: 3rem;
+    color: white;
+    font-size: 2rem;
+    animation: jump 2s infinite;
+}
+
+
+
+
+@keyframes jump {
+    0% {filter: blur(0);}
+
+    50% {filter: blur(1px);
+    color: rgb(120,168,141);
+transform: translateY(5px);}  
+
+    100% {filter: blur(0);}
+}
