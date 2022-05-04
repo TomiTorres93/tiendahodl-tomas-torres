@@ -73,15 +73,15 @@ transform: translateY(5px);}
     width: 260px;
     height: fit-content;
     padding: 0rem 0rem 2rem 0rem;
-    color: white;
+    color: rgb(88, 88, 88);
     margin: 0.5rem;
     justify-content:space-between ;
     border-radius: 20px;
     transition: 0.5s all ease-in-out;
     opacity: 100%;
     cursor: pointer;
-    background-color: rgb(77, 77, 77);
-    box-shadow: 0px 0px 15px  #dcffee;
+    background-color: rgb(212, 212, 212);
+
 }
 
 .cardimg {
@@ -146,4 +146,20 @@ transform: translateY(5px);}
 
 .backmeta {
     background-color: rgb(235, 178, 93);
+}
+
+
+
+
+/* CONTADOR */
+
+.contador {
+    font-size: 1rem;
+    width: 2rem;
+    height: fit-content;
+    padding: 1rem;
+    border: white 1px solid;
+    background-color: #300b39;
+    color: white;
+    margin: 0 auto;
 }

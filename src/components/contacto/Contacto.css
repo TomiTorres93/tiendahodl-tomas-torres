@@ -1,0 +1,143 @@
+.sectionwa-subtit-cont {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: 3rem auto;
+
+}
+
+.formlogocont {
+    width: 30%;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: backcolor infinite 20s ease-in-out;
+    border-radius: 20px 0px 0px 20px;
+
+}
+
+.logoIcon2 {
+    position: relative;
+    z-index: 100;
+    width: 10rem;
+    height: fit-content;
+    left: 13rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(88, 88, 88);
+}
+
+
+
+
+@keyframes backcolor {
+    0% {background-color: rgb(148, 130, 180)}
+    25% {background-color: rgb(164, 198, 221)}  
+    50% {background-color: #78a88d}  
+    75% {background-color: rgb(211, 186, 78)}  
+    95% {background-color: rgb(192, 104, 104)}  
+    100% {background-color: rgb(148, 130, 180)}
+}
+
+.wabotonmensaje {
+    color: #300b39;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+    transition: 0.5s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.wabotonmensaje:hover {
+    background-color: rgb(120,168,141);
+    color: white;
+}
+
+
+.inputsCont {
+    margin: 1rem auto;
+    width: 70%;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(88, 88, 88);
+    border-radius: 0px 20px  20px 0px;
+}
+
+
+.input {
+    height: fit-content;
+    padding: 1rem;
+    margin: 0rem auto;
+    width: 80%;
+    border-radius: 20px 20px 0px 0px;
+    background-color: white;
+    border: none;
+    color: #300b39;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    word-wrap: normal;
+    border-bottom: 1px solid grey;
+}
+
+.textarea {
+    height: 10rem;
+    padding: 1rem;
+    margin: 0rem auto;
+    width: 80%;
+    border-radius: 0px 0px 20px 20px ;
+    background-color: white;
+    border: none;
+    color: #300b39;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    word-wrap: normal;
+}
+
+
+.tituloinput {
+    color: white;
+    background-color: rgb(88, 88, 88);
+    padding: 1rem;
+    margin: 0rem auto;
+}
+
+.textarea::placeholder {
+    color: rgb(194, 194, 194);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    justify-content: center;
+  }
+
+.input::placeholder {
+    color: rgb(194, 194, 194);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+  }
+
+
+.buttoncont {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}

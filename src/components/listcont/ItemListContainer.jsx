@@ -19,13 +19,13 @@ function ItemListContainer() {
   <div className='itemsCont'>
 
    
-    <Card  id="carduno"   img={Btcmoon} producto="OLD BUT GOLD" descripcion="Todos empezamos comprando algunos satoshis" precio="$1200"  />
+    <Card  id="carduno"   img={Btcmoon} producto="OLD BUT GOLD" descripcion="Todos empezamos comprando algunos satoshis." precio="$1200"  />
 
 
     <Card id="carddos"  descripcion="A algunos solo les gusta ver el mundo arder." img={etheip} producto="EIP-1559" precio="$1200" className="backeip"/>
 
 
-    <Card id="cardtres" className="cardcont backethath"  img={ethath}  producto="ETH-ATH" descripcion="¿Nuestra criptomoneda favorita y blockchain favorita?" precio="$1200" />
+    <Card id="cardtres" className="cardcont backethath"  img={ethath}  producto="ETH-ATH" descripcion="¿Nuestra criptomoneda y blockchain favorita?" precio="$1200" />
 
     <Card id="cardcuatro" className="cardcont backcake"  img={cake} producto="PANCAKE NEON" descripcion="¿Los Syrup Pools te hicieron pensar en dejar tu laburo?" precio="$1200" />
 

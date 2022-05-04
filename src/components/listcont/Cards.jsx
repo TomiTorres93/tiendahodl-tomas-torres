@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ItemListContainer.css';
+import Count from './Count';
 
 
 
@@ -7,10 +8,10 @@ function Card({id, clase, img, producto, descripcion, precio}) {
 
   const [switchToggle2, setswitchToggle2] = useState(false)
   const ToggleSwitch2 = () => {
-    
-  switchToggle2 ? setswitchToggle2(false) : setswitchToggle2(true);
-  
+    switchToggle2 ? setswitchToggle2(false) : setswitchToggle2(true); 
   }
+
+
     return (
 
   <div onClick={ToggleSwitch2} className={switchToggle2 ? "cardcont2" : "cardcont"}  id={id}>
