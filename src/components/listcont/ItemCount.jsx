@@ -23,7 +23,7 @@ export default function ItemCount({stock, initial, onAdd, itemname}) {
     }
 
     function onAddbutton () {
-      console.log("Agregaste " + count + " " + itemname + " al carrito")
+      alert("Agregaste " + count + " " + itemname + " al carrito")
     }
 
   return (
