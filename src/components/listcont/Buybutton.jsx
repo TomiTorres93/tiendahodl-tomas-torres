@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 
-export default function Count() {
+export default function Buybutton() {
 
     const [count, setCount] = useState(0)
 
@@ -18,8 +18,10 @@ export default function Count() {
     }
 
 
+ 
+// useEffect ( () =>    {
 
-
+// }, []) 
 
   return (
     <div>

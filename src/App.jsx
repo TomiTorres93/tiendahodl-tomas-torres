@@ -6,7 +6,7 @@
  import ProductosCont from './components/productos/ProductosCont';
  import Nosotros from './components/nosotros/Nosotros';
  import Contacto from './components/contacto/Contacto';
- import Count from './components/listcont/Count';
+ import ItemCount from './components/listcont/ItemCount';
 
 
 
@@ -14,13 +14,7 @@
    return (
      <div className="App">
         <Navbar />
-        <Count/>
         <ItemListContainer/>
-        <ProductosCont/>
-        <Nosotros/>
-        <Contacto/>
-        
-
      </div>
    );
 

@@ -19,9 +19,9 @@ function ProductosCont() {
      
   <div className='itemsCont'>
     
-    <Producto img={hoodie} className="cardprocont" producto="HOODIE" imgid="hoodieid" />
-    <Producto img={remera} className="cardprocont" producto="REMERA" />
-    <Producto img={short} className="cardprocont"  producto="SHORT"/>
+    <Producto img={hoodie} className="cardprocont" producto="HOODIE" imgid="hoodieid" precio="6500" />
+    <Producto img={remera} className="cardprocont" producto="REMERA" precio="3500"/>
+    <Producto img={short} className="cardprocont"  producto="SHORT" precio="2500"/>
 
   </div>
   </>  

@@ -3,7 +3,7 @@ import './Productos.css';
 
 
 
-function Producto({img, producto, id, imgid}) {
+function Producto({img, producto, id, imgid, precio}) {
 
 const [switchToggle, setswitchToggle] = useState(false)
 const ToggleSwitch = () => {
@@ -18,8 +18,8 @@ switchToggle ? setswitchToggle(false) : setswitchToggle(true);
   <div  className={switchToggle ? "cardprocont2" : "cardprocont"} id={id}>
         <img src={img} className={switchToggle ? "cardproimgglow" : "cardproimg"} alt={producto} imgid={imgid} onClick={ToggleSwitch}/>
         <p className="cardproTitulo">{producto}</p>
+        <p className="cardPrecio">${precio}</p>
   </div>
-
 
     ); }
 
