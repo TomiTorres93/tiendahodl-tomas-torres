@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ItemListContainer.css';
+import carritoadd from './img/carritoadd.png';
 
 
 export default function ItemCount({stock, initial, onAdd, itemname}) {
@@ -34,7 +35,7 @@ export default function ItemCount({stock, initial, onAdd, itemname}) {
         <button className='AddRemoveButton toprightradius' onClick={Add}>+</button>
       </div>
       <div className='addCartButtonCont'>
-        <button className='addCartButton' onClick={onAddbutton}>Agregar al carrito</button>
+        <button className='addCartButton' onClick={onAddbutton}> <img className='carritoadd' src={carritoadd} alt="" /> </button>
         <p className='ultimosDisp'>¡Últimos {stock} disponibles!</p>
       </div>
     </div>

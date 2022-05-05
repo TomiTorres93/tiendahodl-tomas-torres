@@ -15,11 +15,13 @@ switchToggle ? setswitchToggle(false) : setswitchToggle(true);
 
     return (
 
+
   <div  className={switchToggle ? "cardprocont2" : "cardprocont"} id={id}>
         <img src={img} className={switchToggle ? "cardproimgglow" : "cardproimg"} alt={producto} imgid={imgid} onClick={ToggleSwitch}/>
         <p className="cardproTitulo">{producto}</p>
         <p className="cardPrecio">${precio}</p>
   </div>
+
 
     ); }
 

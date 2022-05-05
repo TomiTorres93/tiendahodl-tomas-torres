@@ -15,6 +15,8 @@
      <div className="App">
         <Navbar />
         <ItemListContainer/>
+        <ProductosCont/>       
+
      </div>
    );
 

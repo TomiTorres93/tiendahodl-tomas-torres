@@ -16,16 +16,6 @@
   
 }
 
-@keyframes jump {
-    0% {filter: blur(0);}
-
-    50% {filter: blur(3px);
-    color: rgb(120,168,141);
-transform: translateY(5px);}  
-
-    100% {filter: blur(0);}
-}
-
 
 .greeting:hover {
     background-color: rgb(120,168,141);
@@ -51,7 +41,7 @@ transform: translateY(5px);}
     text-align: left;
     width: 260px;
     height: fit-content;
-    padding: 0rem 0rem 2rem 0rem;
+    padding: 0rem 0rem 1rem 0rem;
     color: white;
     margin: 0.5rem;
     justify-content:space-between ;
@@ -139,7 +129,7 @@ transform: translateY(5px);}
 
 /* CONTADOR */
 
-.contador-cont {
+/* .contador-cont {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -187,7 +177,6 @@ transform: translateY(5px);}
 
 }
 
-
 .toprightradius {
     border-radius: 0px 5px 0px 0px;
 }
@@ -216,6 +205,96 @@ transition: 0.5s all ease-in-out;
 color: white;
 background-color: #300b39;
 font-weight: bold;
+} */
+
+
+.contador-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.contador {
+    font-size: 1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    text-align: center;
+    background: none;
+    color: white;
+    border: 2px solid rgb(192, 104, 104);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contador:hover {
+    animation: borderglow infinite 3s ease-in-out;
+
+}
+
+
+
+.AddRemoveButton {
+    font-size: 1rem;
+    height: 2rem;
+    width: 6rem;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+}
+
+.AddRemoveButton:hover {
+    color: rgb(192, 104, 104);
+    font-weight: bolder;
+}
+
+.addCartButtonCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+
+}
+
+.toprightradius {
+    border-radius: 0px 5px 0px 0px;
+}
+
+.topleftradius {
+    border-radius: 5px 0px  0px 0px;
+}
+
+.addCartButton {
+width: 3rem;
+height: 3rem;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background-color: white;
+color: rgb(192, 104, 104);
+padding: 0.5rem;
+border: none;
+cursor: pointer;
+font-family: 'Montserrat', sans-serif;
+transition: 0.5s all ease-in-out;
+position: relative;
+bottom: 0.7rem;
+}
+
+.addCartButton:hover {
+color: white;
+background-color: rgb(192, 104, 104);
+font-weight: bold;
+bottom: 1rem;
 }
 
 .ultimosDisp {
@@ -224,3 +303,33 @@ font-weight: bold;
 
 }
 
+.carritoadd {
+    width: 1.5rem;
+}
+
+
+
+/* EFECTOS */
+
+
+@keyframes jump {
+    0% {filter: blur(0);}
+
+    50% {filter: blur(3px);
+    color: rgb(120,168,141);
+transform: translateY(5px);}  
+
+    100% {filter: blur(0);}
+}
+
+
+@keyframes borderglow {
+    0% {    border: 2px solid rgb(192, 104, 104);
+    }
+
+    50% {    border: 2px solid rgb(206, 206, 206);
+    }  
+
+    100% {    border: 2px solid rgb(192, 104, 104);
+    }
+}
