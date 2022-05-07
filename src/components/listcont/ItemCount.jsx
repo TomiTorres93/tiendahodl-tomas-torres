@@ -3,7 +3,7 @@ import './ItemListContainer.css';
 import carritoadd from './img/carritoadd.png';
 
 
-export default function ItemCount({stock, initial, onAdd, itemname}) {
+export default function ItemCount({stock, initial, onAdd}) {
 
     const [count, setCount] = useState(0)
 
@@ -24,11 +24,14 @@ export default function ItemCount({stock, initial, onAdd, itemname}) {
     }
 
     function onAddbutton () {
-      alert("Agregaste " + count + " " + itemname + " al carrito")
+      alert("Agregaste " + count + " al carrito")
     }
 
+    
+     
+
   return (
-    <div>
+    <>
       <div  className='contador-cont'>
         <button className='AddRemoveButton topleftradius' onClick={Remove}>-</button>
         <div className='contador'>{count}</div>
@@ -38,7 +41,7 @@ export default function ItemCount({stock, initial, onAdd, itemname}) {
         <button className='addCartButton' onClick={onAddbutton}> <img className='carritoadd' src={carritoadd} alt="" /> </button>
         <p className='ultimosDisp'>¡Últimos {stock} disponibles!</p>
       </div>
-    </div>
+    </>
   )
 }
 

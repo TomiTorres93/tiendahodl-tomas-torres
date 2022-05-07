@@ -15,9 +15,8 @@ function ProductosCont() {
 
         
   < >
-  <Titulo  texto="Elegí el producto" />
-     
-  <div className='itemsCont'>
+    
+  <div className='productositemsCont'>
     
     <Producto img={hoodie} className="cardprocont" producto="HOODIE" imgid="hoodieid" precio="6500" />
     <Producto img={remera} className="cardprocont" producto="REMERA" precio="3500"/>

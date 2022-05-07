@@ -7,6 +7,7 @@
  import Nosotros from './components/nosotros/Nosotros';
  import Contacto from './components/contacto/Contacto';
  import ItemCount from './components/listcont/ItemCount';
+ import ItemDetail from './components/listcont/ItemDetail';
 
 
 
@@ -15,8 +16,7 @@
      <div className="App">
         <Navbar />
         <ItemListContainer/>
-        <ProductosCont/>       
-
+  
      </div>
    );
 

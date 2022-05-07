@@ -4,24 +4,25 @@ import ItemCount from './ItemCount';
 
 
 
-function Card({id, clase, img, producto, descripcion, stock, itemname}) {
+function Item({img, id, producto, descripcion, stock}) {
 
-  const [switchToggle2, setswitchToggle2] = useState(false)
-  const ToggleSwitch2 = () => {
-    switchToggle2 ? setswitchToggle2(false) : setswitchToggle2(true); 
-  }
+  // const [itemdetail, setitemdetail] = useState(false)
+  // const toggleitemdetail = () => {
+  //   itemdetail ? setitemdetail(false) : setitemdetail(true); }
+
+  
 
 
     return (
 
       // onClick={ToggleSwitch2} className={switchToggle2 ? "cardcont2" : "cardcont"}    
-  <div className="cardcont" id={id}>
+  <div className="cardcont" id={id} onClick="" >
         <img src={img} className="cardimg" alt={producto} />
         <p className="cardTitulo">{producto}</p>
         <p className="cardDescripcion">{descripcion}</p>
 
-        <ItemCount stock={stock} itemname={itemname}/>
+        <ItemCount stock={stock}/>
   </div>
     ); }
 
-export default Card;
+export default Item;

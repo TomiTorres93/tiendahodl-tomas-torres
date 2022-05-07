@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Titulo from '../texts/Titulo'
-import Card from '../listcont/Cards'
+import Card from '../listcont/Item'
 import designer from './img/designer.png';
 import dev from './img/dev.png';
 import marketing from './img/marketing.png';

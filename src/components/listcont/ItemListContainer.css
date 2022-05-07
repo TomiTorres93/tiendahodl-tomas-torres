@@ -99,7 +99,7 @@
 .cardDescripcion {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.8rem;
-    margin: 0;
+    margin: 0rem 0rem 2rem;
     padding: 0rem 2rem;
 }
 
@@ -124,97 +124,14 @@
     background-color: rgb(235, 178, 93);
 }
 
-
-
-
-/* CONTADOR */
-
-/* .contador-cont {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
-    width: 100%;
-}
-
-.contador {
-    font-size: 1rem;
-    width: 2rem;
-    height: 2rem;
-    text-align: center;
-    background-color: grey;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-}
-
-.AddRemoveButton {
-    font-size: 1rem;
-    height: 2rem;
-    width: 6rem;
-    background-color: grey;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: 0.5s all ease-in-out;
-}
-
-.AddRemoveButton:hover {
-    color: #300b39;
-    font-weight: bolder;
-}
-
-.addCartButtonCont {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    width: 100%;
-
-}
-
-.toprightradius {
-    border-radius: 0px 5px 0px 0px;
-}
-
-.topleftradius {
-    border-radius: 5px 0px  0px 0px;
-}
-
-.addCartButton {
-width: 14rem;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: white;
-color: #300b39;
-padding: 0.5rem;
-border: none;
-border-radius: 0px 0px 5px 5px;
-cursor: pointer;
-font-family: 'Montserrat', sans-serif;
-transition: 0.5s all ease-in-out;
-
-}
-
-.addCartButton:hover {
-color: white;
-background-color: #300b39;
-font-weight: bold;
-} */
-
-
 .contador-cont {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 0rem;
     width: 100%;
+    color: white;
 }
 
 .contador {
@@ -261,7 +178,7 @@ font-weight: bold;
     justify-content: center;
     margin-bottom: 1rem;
     width: 100%;
-
+    color: white;
 }
 
 .toprightradius {
@@ -307,7 +224,51 @@ bottom: 1rem;
     width: 1.5rem;
 }
 
+/* ITEM DETAIL */
 
+.itemdetailcont {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.itemdetailDerCont {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.itemdetailimg {
+    width: 450px;
+    height: 450px;
+    border-radius: 15px;
+}
+
+
+.itemdetailTitulo {
+    font-size: 2rem;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    margin: 0.5rem 0rem;
+    padding: 0rem 2rem;
+    color: white;
+}
+
+.itemdetailDescripcion {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    margin: 2rem;
+    padding: 0rem 2rem;
+    color: white;
+}
 
 /* EFECTOS */
 
