@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
 import './ItemListContainer.css';
 import ItemCount from './ItemCount';
-import btcmoon from './img/btcmoon.png';
 import ProductosCont from '../productos/ProductosCont'
+import Loader from './Loader';
 
 
-
-function ItemDetail({img, id, producto, descripcion, stock}) {
-
-
-  
-
+function ItemDetail({img, nombre, descripcion, stock, loading}) {
+    
+    const loaders = [1];
 
     return (
 
-  <div className="itemdetailcont" id={id} onClick="" >
-        <img src={btcmoon} className="itemdetailimg" alt={producto} />
 
-        <div className='itemdetailDerCont'>
-        <p className="itemdetailTitulo">Nombre Producto</p>
-        <p className="itemdetailDescripcion">Todos empezamos comprando algunos satoshis.</p>
+        
+    <div className='ItemDetailListCont'>
+
+    {loading
+    ? loaders.map((loader) => <Loader key={loader} />) : 
+    <div className='itemdetailcont' >
+
+    <img src={img} className="itemdetailimg" alt={nombre} />
+    <div className='itemdetailDerCont'>
+        <p className="itemdetailTitulo">{nombre}</p>
+        <p className="itemdetailDescripcion">{descripcion}</p>
         <ProductosCont />
         <ItemCount stock={stock}/>
-        </div>
-  </div>
+    </div>
+
+</div>}
+
+</div>
+
+
+
     ); }
 
 export default ItemDetail;

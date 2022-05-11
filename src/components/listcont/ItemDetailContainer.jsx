@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import './ItemListContainer.css';
 import Titulo from '../texts/Titulo'
-import ItemList from './ItemList'
+import ItemDetail from './ItemDetail'
+
 
 import btcmoon from './img/btcmoon.png';
 import cake from './img/cake.png';
@@ -13,9 +14,12 @@ import metamask from './img/metamask.png';
 
 function ItemListContainer() {
  
-
-  const [items, setItems] = useState([]);
+  const [itemsdetail, setItemsdetail] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+
+
+  
   const [data, setData]=useState([]);
 
 
@@ -44,20 +48,21 @@ function ItemListContainer() {
     });
 
      cards.then((response) => {
-      setItems(response);
+      setItemsdetail(response);
       setLoading(false);
     });
       
   },  []);
 
-   
     return (
   < >
-  <Titulo  texto="Elegí el diseño" />
-  <ItemList items={data} loading={loading} />
 
+
+  <ItemDetail itemsdetail={data} loading={loading} img={etheip} nombre="EIP-1559" descripcion="A algunos solo les gusta ver el mundo arder." />
+  
   </>  
   ); }
 
- 
+    
 export default ItemListContainer;
+

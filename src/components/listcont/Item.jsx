@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ItemListContainer.css';
-import ItemCount from './ItemCount';
 
 
 
-function Item({img, id, producto, descripcion, stock}) {
+function Item({id, nombre, img, descripcion}) {
 
   // const [itemdetail, setitemdetail] = useState(false)
   // const toggleitemdetail = () => {
@@ -16,13 +15,13 @@ function Item({img, id, producto, descripcion, stock}) {
     return (
 
       // onClick={ToggleSwitch2} className={switchToggle2 ? "cardcont2" : "cardcont"}    
+  <a>
   <div className="cardcont" id={id} onClick="" >
-        <img src={img} className="cardimg" alt={producto} />
-        <p className="cardTitulo">{producto}</p>
+        <img src={img}  className="cardimg" alt={nombre} />
+        <p className="cardTitulo">{nombre}</p>
         <p className="cardDescripcion">{descripcion}</p>
-
-        <ItemCount stock={stock}/>
   </div>
+  </a>
     ); }
 
 export default Item;
