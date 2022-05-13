@@ -3,7 +3,7 @@ import './ItemListContainer.css';
 import carritoadd from './img/carritoadd.png';
 
 
-export default function ItemCount({stock, initial, onAdd}) {
+export default function ItemCount({stock, precio}) {
 
     const [count, setCount] = useState(0)
 
@@ -24,7 +24,14 @@ export default function ItemCount({stock, initial, onAdd}) {
     }
 
     function onAddbutton () {
-      alert("Agregaste " + count + " al carrito")
+      
+      if (count <= stock) {
+        alert("Agregaste " + count + " al carrito")
+      } else {
+        alert("No tenemos suficiente stock")
+      }
+    
+    
     }
 
     

@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { getFetch } from '../../data';
 
 
-function Item({id, nombre, img, descripcion}) {
+
+function Item({id, nombre, img, descripcion, stock, precio}) {
 
   const [productos, setProductos]=useState([]);
 
@@ -12,7 +13,6 @@ function Item({id, nombre, img, descripcion}) {
  useEffect(() => {
   getFetch()
   .then(respuesta =>   setProductos(respuesta))
-  console.log(img)
 },  []);
   
 

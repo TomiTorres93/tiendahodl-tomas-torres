@@ -9,8 +9,6 @@ function ItemListContainer() {
  
   const [productos, setProductos]=useState([]);
   const [loading, setLoading] = useState(true);
-
-  
   const { detalleID } = useParams()
 
   
@@ -27,7 +25,7 @@ function ItemListContainer() {
   < >
 
 
-  <ItemDetail  img={productos.img} nombre={productos.nombre} descripcion={productos.descripcion}  stock={productos.stock}  loading={loading}/>
+  <ItemDetail  img={productos.img} nombre={productos.nombre} descripcion={productos.descripcion}  loading={loading}/>
   
   </>  
   ); }

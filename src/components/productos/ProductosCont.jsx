@@ -1,32 +1,35 @@
+import React, { useState, useEffect } from 'react';
 import './Productos.css';
 import Producto from './Producto'
-import Titulo from '../texts/Titulo'
-import hoodie from './img/hoodie.png';
-import remera from './img/remera.png';
-import short from './img/short.png';
+import ItemCount from '../listcont/ItemCount';
 
+
+  
+
+const data = [    {"id":"1", "tipo": "BUZO", "stock":"1", "precio":"6500", "img":"https://drive.google.com/uc?id=1_92ZJra32ZIsYuxbBf1CpcXjgn3jmUeg"},
+{"id":"2", "tipo": "REMERA", "stock":"2", "precio":"3500", "img":"https://drive.google.com/uc?id=1DiNWCOli3N1mDw9EAAnPVrApjHTo5fI5"},
+{"id":"3", "tipo": "SHORTS", "stock":"3", "precio":"2500", "img":"https://drive.google.com/uc?id=1_lO_qnqwEQQ3Yf2npJJqMwihWHLcp572"}
+]
 
 function ProductosCont() {
+ 
+   const [stock, setStock] = useState(0)
+
 
 
     
-
     return (
-
-        
-  < >
-    
-  <div className='productositemsCont'>
-    
-    <Producto img={hoodie} className="cardprocont" producto="HOODIE" imgid="hoodieid" precio="6500" />
-    <Producto img={remera} className="cardprocont" producto="REMERA" precio="3500"/>
-    <Producto img={short} className="cardprocont"  producto="SHORT" precio="2500"/>
-
-  </div>
-  </>  
-
-    ); 
   
+  <div className='productositemsCont'>
+
+      {data.map((data) => (
+        
+            <Producto stockchange={(()=>  setStock(data.stock))} className="cardprocont" id={data.id} tipo={data.tipo} stock={data.stock} precio={data.precio} img={data.img}  />
+      ))}
+      <ItemCount stock={stock}/>
+  </div>
+    ); 
+    
 }
 
     

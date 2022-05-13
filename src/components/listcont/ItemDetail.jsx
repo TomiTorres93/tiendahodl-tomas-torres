@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './ItemListContainer.css';
-import ItemCount from './ItemCount';
 import ProductosCont from '../productos/ProductosCont'
 import Loader from './Loader';
 import { getFetch } from '../../data';
 
-function ItemDetail({id, img, nombre, descripcion, stock, loading}) {
+function ItemDetail({id, img, nombre, descripcion, loading}) {
     
     const loaders = [1];
 
@@ -23,10 +22,9 @@ function ItemDetail({id, img, nombre, descripcion, stock, loading}) {
             <p className="itemdetailTitulo">{nombre}</p>
             <p className="itemdetailDescripcion">{descripcion}</p>
             <ProductosCont />
-            <ItemCount stock={stock}/>
         </div>
-
-</div>}
+    </div>
+    }
 
 </div>
 

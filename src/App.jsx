@@ -26,7 +26,6 @@ import './App.css';
           <Routes>
             <Route path='/' element = { <ItemListContainer/> } />
             <Route path='/detalle/:detalleID' element = { <ItemDetailContainer/> } />
-
             <Route path='/*' element ={ <Navigate to ='/' replace /> }></Route>
           </Routes>
         </div>

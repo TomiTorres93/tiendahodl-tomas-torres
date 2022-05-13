@@ -61,6 +61,7 @@ nav {
     text-decoration: none;
     transition: all 0.5s ease-in-out;
     cursor: pointer;
+    text-decoration: none;
 }
 
 
@@ -68,8 +69,13 @@ nav {
     background-color: white;
     color: black ;
     font-weight: 400;
+    text-decoration: none;
+
 }
 
 
 
-
+.link {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
