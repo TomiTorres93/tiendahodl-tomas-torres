@@ -2,62 +2,59 @@ import React, { useEffect, useState } from 'react';
 
 import './ItemListContainer.css';
 import Titulo from '../texts/Titulo'
-import ItemList from './ItemList'
+import ItemList from './ItemList';
+import { Link } from "react-router-dom"
+import { getFetch } from '../../data';
+import { useParams } from 'react-router-dom';
 
-import btcmoon from './img/btcmoon.png';
-import cake from './img/cake.png';
-import ethath from './img/ethath.png';
-import etheip from './img/etheip.png';
-import metamask from './img/metamask.png';
-
-
-function ItemListContainer() {
- 
+function ItemListContainer( ) {
+  
 
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [data, setData]=useState([]);
+  const [productos, setProductos]=useState([]);
+
+  const { id } = useParams()
 
 
- 
+ /// FETCH DE LOS PRODUCTOS///
   useEffect(() => {
 
-     fetch('/data.json', {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    })
-    .then(response =>   response.json())
-    .then(function(resp) {
-      console.log(resp);
-      setData(resp)
-    });
+    if (id) {
+      getFetch()
+      .then(respuesta =>   setProductos(respuesta.filter((productos)=> productos.categoria === id)))
+      .catch((err)=>console.log(err))
+      .finally(() => setLoading(false))
+    } else {
+      getFetch()
+      .then(respuesta=> setProductos(respuesta))
+      .catch((err)=>console.log(err))
+      .finally(() => setLoading(false))
+    }
 
-    const cards = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve([
+    
+  
+  },  [id]);
 
+  ////SIMULACIÓN DE CARGA LAS CARDS - LOADER ///
+  
+  const cards = new Promise((resolve, reject) => {
+     setTimeout(() => {resolve([]);}, 2000);
+   });
 
-         ]);
-      }, 2000);
-    });
-
-     cards.then((response) => {
-      setItems(response);
-      setLoading(false);
-    });
-      
-  },  []);
-
+    cards.then((cargarItems) => {
+     setItems(cargarItems);
+     setLoading(false);
+   });
    
+
     return (
   < >
   <Titulo  texto="Elegí el diseño" />
-  <ItemList items={data} loading={loading} />
-
+  <ItemList items={productos} loading={loading}   />
   </>  
   ); }
+
 
  
 export default ItemListContainer;

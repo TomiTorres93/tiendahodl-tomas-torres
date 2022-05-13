@@ -1,64 +1,33 @@
 import React, { useEffect, useState } from 'react';
-
 import './ItemListContainer.css';
-import Titulo from '../texts/Titulo'
 import ItemDetail from './ItemDetail'
-
-
-import btcmoon from './img/btcmoon.png';
-import cake from './img/cake.png';
-import ethath from './img/ethath.png';
-import etheip from './img/etheip.png';
-import metamask from './img/metamask.png';
+import { useParams } from 'react-router-dom';
+import { getFetch } from '../../data';
 
 
 function ItemListContainer() {
  
-  const [itemsdetail, setItemsdetail] = useState([]);
+  const [productos, setProductos]=useState([]);
   const [loading, setLoading] = useState(true);
-  
-
 
   
-  const [data, setData]=useState([]);
+  const { detalleID } = useParams()
 
-
- 
+  
   useEffect(() => {
 
-     fetch('/data.json', {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    })
-    .then(response =>   response.json())
-    .then(function(resp) {
-      console.log(resp);
-      setData(resp)
-    });
+    getFetch(detalleID)
+    .then(respuesta=> setProductos(respuesta))
+    .catch((err)=> console.log(err))
+    .finally(() => setLoading(false)) 
+  },  [detalleID]);
 
-    const cards = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve([
-
-
-         ]);
-      }, 2000);
-    });
-
-     cards.then((response) => {
-      setItemsdetail(response);
-      setLoading(false);
-    });
-      
-  },  []);
 
     return (
   < >
 
 
-  <ItemDetail itemsdetail={data} loading={loading} img={etheip} nombre="EIP-1559" descripcion="A algunos solo les gusta ver el mundo arder." />
+  <ItemDetail  img={productos.img} nombre={productos.nombre} descripcion={productos.descripcion}  stock={productos.stock}  loading={loading}/>
   
   </>  
   ); }

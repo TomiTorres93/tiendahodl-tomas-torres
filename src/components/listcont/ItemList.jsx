@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Item from './Item'
 import Loader from './Loader';
 import './ItemListContainer.css';
+import { Link } from 'react-router-dom';
+
 
 export default function ItemList({ loading, items}) {
 
     const loaders = [1];
 
+ 
   return (
 
     <div className='itemsCont'>
@@ -14,8 +17,10 @@ export default function ItemList({ loading, items}) {
 
         {loading
         ? loaders.map((loader) => <Loader key={loader} />) : 
-        items.map((item) =>         
-        <Item key={item.id} {...item}  />)}
+
+
+        items.map((item) =>  <Item key={item.id} {...item}/>)}
+
       
     </div>
   )
