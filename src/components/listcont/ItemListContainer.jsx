@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
-
 import './ItemListContainer.css';
 import Titulo from '../texts/Titulo'
 import ItemList from './ItemList';
 import { Link } from "react-router-dom"
 import { getFetch } from '../../data';
 import { useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+
+  // RANDOM BUTTON
+
+  let randomID = Math.floor(Math.random() * 15);
+
+  console.log(randomID)
 
 function ItemListContainer( ) {
   
@@ -17,12 +24,14 @@ function ItemListContainer( ) {
   const { id } = useParams()
 
 
+ 
+   
  /// FETCH DE LOS PRODUCTOS///
   useEffect(() => {
 
     if (id) {
       getFetch()
-      .then(respuesta =>   setProductos(respuesta.filter((productos)=> productos.categoria === id)))
+      .then(respuesta =>   setProductos(respuesta.filter((prods)=> prods.categoria === id)))
       .catch((err)=>console.log(err))
       .finally(() => setLoading(false))
     } else {
@@ -32,7 +41,7 @@ function ItemListContainer( ) {
       .finally(() => setLoading(false))
     }
 
-    
+ 
   
   },  [id]);
 
@@ -46,11 +55,38 @@ function ItemListContainer( ) {
      setItems(cargarItems);
      setLoading(false);
    });
-   
 
-    return (
+  
+  
+  
+  //  console.log(randomId)
+
+ 
+   return (
   < >
   <Titulo  texto="Elegí el diseño" />
+
+  <div className='filtercont' >
+  <p className='filterelementfilt'>FILTRO</p>
+
+  <Link className='link filterelement' to={`/categoria/hodl`}>
+  HODL DESIGN
+  </Link>
+
+  <Link className='link filterelement' to={`/categoria/nft`}>
+  NFT COLLECTIONS
+  </Link>
+
+  <Link className='link filterelement'  to={`/detalle/${randomID}`}>
+  PICK RANDOM
+  </Link>
+
+  <Link className='link filterelement' to={`/`}>
+  VER TODO
+  </Link>
+
+  </div>    
+
   <ItemList items={productos} loading={loading}   />
   </>  
   ); }

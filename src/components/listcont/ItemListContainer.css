@@ -107,25 +107,6 @@
 }
 
 
-.backold {
-    background-color: rgb(211, 186, 78);
-}
-
-.backeip {
-    background-color: rgb(192, 104, 104);
-}
-
-.backethath {
-    background-color: rgb(148, 130, 180);
-}
-
-.backcake{
-    background-color: rgba(106, 136, 145);
-}
-
-.backmeta {
-    background-color: rgb(235, 178, 93);
-}
 
 .contador-cont {
     display: flex;
@@ -291,8 +272,52 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
     
 }
 
+/* FILTER */
 
+.filtercont {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    
+    width: fit-content;
+}
 
+.filterelement {
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+    padding: 0.5rem 1rem;
+    background-color: rgb(99, 86, 86);
+    opacity: 50%;
+    border-radius: 10px;
+    transition: ease-in-out 0.5s all;
+    cursor: pointer;
+    filter: blur(0.8px);
+    color: white;
+    text-decoration: none;
+
+}
+
+.filterelementfilt {
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(106, 136, 145);
+    border-radius: 10px;
+    transition: ease-in-out 0.5s all;
+    cursor: pointer;
+}
+
+.filterelement:hover {
+    opacity: 100%;
+    letter-spacing: 0.2rem;
+    filter: blur(0px);
+    background-color: rgb(192, 104, 104);
+}
 
 /* EFECTOS */
 
@@ -317,4 +342,25 @@ transform: translateY(5px);}
 
     100% {    border: 2px solid rgb(192, 104, 104);
     }
+}
+
+
+.backold {
+    background-color: rgb(211, 186, 78);
+}
+
+.backeip {
+    background-color: rgb(192, 104, 104);
+}
+
+.backethath {
+    background-color: rgb(148, 130, 180);
+}
+
+.backcake{
+    background-color: rgba(106, 136, 145);
+}
+
+.backmeta {
+    background-color: rgb(235, 178, 93);
 }
