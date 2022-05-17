@@ -56,14 +56,13 @@ function ItemListContainer( ) {
      setLoading(false);
    });
 
-  
-  
-  
-  //  console.log(randomId)
+
 
  
    return (
   < >
+
+
   <Titulo  texto="Elegí el diseño" />
 
   <div className='filtercont' >
@@ -85,7 +84,9 @@ function ItemListContainer( ) {
   VER TODO
   </Link>
 
-  </div>    
+  </div>
+
+
 
   <ItemList items={productos} loading={loading}   />
   </>  

@@ -17,7 +17,7 @@ function Navbar() {
     <Link className='link' to={`/contacto`}>
     <a className="menu-item borde4" href="">CONTACTO</a></Link>
   </ul>
-  <Carrito />
+  <Link className='link' to={`/cart`}>  <Carrito /></Link>
 
 </nav>
     ); }

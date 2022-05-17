@@ -17,7 +17,7 @@ switchToggle ? setswitchToggle(false) : setswitchToggle(true);
 
   <div  className={switchToggle ? "cardprocont2" : "cardprocont"} id={id}>
 
-        <img src={img} className={switchToggle ? "cardproimgglow" : "cardproimg"} alt={tipo} onClick={stockchange} />
+        <img src={img} className={switchToggle ? "cardproimgglow" : "cardproimg"} alt={tipo} onClick={stockchange}  />
         <p className="cardPrecio">${precio}</p>
 
   </div>
