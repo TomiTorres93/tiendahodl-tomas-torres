@@ -3,12 +3,13 @@ import Titulo from '../texts/Titulo'
 import logohodlcont from './img/logohodlcont.png';
 import './Contacto.css';
 
-
 function Contacto({}) {
   
     return (
 
+
     <div>
+ 
         <Titulo  texto="Contactanos" />
 
 

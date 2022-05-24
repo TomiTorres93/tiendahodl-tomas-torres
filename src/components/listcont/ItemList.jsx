@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Item from './Item'
 import Loader from './Loader';
 import './ItemListContainer.css';
-import { Link } from 'react-router-dom';
 
 
 export default function ItemList({ loading, items}) {

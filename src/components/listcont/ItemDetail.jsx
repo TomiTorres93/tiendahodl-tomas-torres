@@ -7,7 +7,7 @@ import Loader from './Loader';
 function ItemDetail({id, img, nombre, descripcion, loading}) {
     
     const loaders = [1];
-
+    
  
 
     return (
@@ -22,7 +22,7 @@ function ItemDetail({id, img, nombre, descripcion, loading}) {
         <div className='itemdetailDerCont'>
             <p className="itemdetailTitulo">{nombre}</p>
             <p className="itemdetailDescripcion">{descripcion}</p>
-            <ProductosCont producto={nombre} />
+            <ProductosCont producto={nombre}  imgpro={img}  />
         </div>
         
     </div>

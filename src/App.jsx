@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-// import { FaBeer } from 'react-icons/fa';
+import { useEffect, useState, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
@@ -12,6 +11,7 @@ import './App.css';
  import Contacto from './components/contacto/Contacto';
  import Nosotros from './components/nosotros/Nosotros';
  import Cart from './components/cart/Cart';
+import CartContextProvider from './context/CartContext';
 
 
  function App() {
@@ -20,22 +20,22 @@ import './App.css';
 
    return (
      <BrowserRouter>
-     
+      <CartContextProvider>
         <div className="App">
 
           <Navbar />
+            <Routes>
+              <Route path='/' element = { <ItemListContainer/> } />
+              <Route path='/detalle/:detalleID' element = { <ItemDetailContainer/> } />
+              <Route path='/contacto' element = { <Contacto/> } />
+              <Route path='/nosotrxs' element = { <Nosotros/> } />
+              <Route path='/cart' element = { <Cart/> } />
+              <Route path='/categoria/:id' element = { <ItemListContainer/> } />
+              <Route path='/*' element ={ <Navigate to ='/' replace /> }></Route>
+            </Routes>
 
-          <Routes>
-            <Route path='/' element = { <ItemListContainer/> } />
-            <Route path='/detalle/:detalleID' element = { <ItemDetailContainer/> } />
-            <Route path='/contacto' element = { <Contacto/> } />
-            <Route path='/nosotrxs' element = { <Nosotros/> } />
-            <Route path='/cart' element = { <Cart/> } /> 
-
-            <Route path='/categoria/:id' element = { <ItemListContainer/> } />
-            <Route path='/*' element ={ <Navigate to ='/' replace /> }></Route>
-          </Routes>
         </div>
+      </CartContextProvider>
      </BrowserRouter>
    );
 

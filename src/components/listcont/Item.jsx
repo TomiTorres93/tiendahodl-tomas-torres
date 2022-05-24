@@ -5,7 +5,7 @@ import { getFetch } from '../../data';
 
 
 
-function Item({id, nombre, img, descripcion, stock, precio}) {
+function Item({id, nombre, img, descripcion}) {
 
   const [productos, setProductos]=useState([]);
 

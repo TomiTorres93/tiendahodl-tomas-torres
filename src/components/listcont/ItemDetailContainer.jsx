@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getFetch } from '../../data';
 
 
-function ItemListContainer() {
+function ItemListContainer({}) {
  
   const [productos, setProductos]=useState([]);
   const [loading, setLoading] = useState(true);
