@@ -5,9 +5,10 @@ import { getFetch } from '../../data';
 
 
 
-function Item({id, nombre, img, descripcion}) {
+function Item({id, nombre, imgpro, img, descripcion}) {
 
   const [productos, setProductos]=useState([]);
+  const [itemimg, setItemimg] = useState(imgpro)
 
  /// FETCH DE LOS PRODUCTOS///
  useEffect(() => {
@@ -21,7 +22,7 @@ function Item({id, nombre, img, descripcion}) {
 
   <Link className='link' to={`/detalle/${id}`}>
   <div className="cardcont" id={id} >
-        <img src={img}  className="cardimg" alt={nombre} />
+        <img   src={itemimg}  className="cardimg" alt={nombre} onMouseOver={() => setItemimg(img)} onMouseOut={() => setItemimg(imgpro)} />
         <p className="cardTitulo">{nombre}</p>
         <p className="cardDescripcion">{descripcion}</p>
   </div>

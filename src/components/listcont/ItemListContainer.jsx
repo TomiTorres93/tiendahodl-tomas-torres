@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import { getFetch } from '../../data';
 import { useParams } from 'react-router-dom';
 
+import {getFirestore, doc, getDoc, collection, getDocs} from "firebase/firestore"
 
   // RANDOM BUTTON
 
@@ -23,27 +24,42 @@ function ItemListContainer( ) {
 
   const { id } = useParams()
 
+// useEffect(() => {
 
+//   const db = getFirestore()
+//   const dbQuery = doc(db, "items", "TUuFE74Rssyyxm7EqyZm")
+//   getDoc(dbQuery)
+//   .then(resp => console.log({ id: resp.id, ...resp.data() }))
+// }, [])
+
+ useEffect(() => {
+
+   const db = getFirestore()
+   const QueryCollection = collection(db, "productos")
+
+
+     if (id) {
+      getDocs(QueryCollection)
+        .then(resp =>   setProductos((resp.docs.map(item => ({ id: item.id, ...item.data()}) )).filter((prods)=> prods.categoria === id)))
+        .catch((err)=>console.log(err))
+        .finally(() => setLoading(false))
+      } else {
+        getDocs(QueryCollection)
+        .then(resp => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data()}) )))  
+        .catch((err)=>console.log(err))
+        .finally(() => setLoading(false))
+      }
+
+
+ }, [id])
  
    
- /// FETCH DE LOS PRODUCTOS///
-  useEffect(() => {
+  /// FETCH DE LOS PRODUCTOS///
+  // useEffect(() => {
 
-    if (id) {
-      getFetch()
-      .then(respuesta =>   setProductos(respuesta.filter((prods)=> prods.categoria === id)))
-      .catch((err)=>console.log(err))
-      .finally(() => setLoading(false))
-    } else {
-      getFetch()
-      .then(respuesta=> setProductos(respuesta))
-      .catch((err)=>console.log(err))
-      .finally(() => setLoading(false))
-    }
 
- 
   
-  },  [id]);
+  //  },  [id]);
 
   ////SIMULACIÓN DE CARGA LAS CARDS - LOADER ///
   
@@ -68,12 +84,12 @@ function ItemListContainer( ) {
   <div className='filtercont' >
   <p className='filterelementfilt'>FILTRO</p>
 
-  <Link className='link filterelement' to={`/categoria/hodl`}>
-  HODL DESIGN
+  <Link className='link filterelement' to={`/categoria/remera`}>
+  REMERAS
   </Link>
 
-  <Link className='link filterelement' to={`/categoria/nft`}>
-  NFT COLLECTIONS
+  <Link className='link filterelement' to={`/categoria/gorra`}>
+  GORRAS
   </Link>
 
   <Link className='link filterelement'  to={`/detalle/${randomID}`}>

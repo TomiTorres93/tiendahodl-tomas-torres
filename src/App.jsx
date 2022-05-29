@@ -32,6 +32,7 @@ import CartContextProvider from './context/CartContext';
               <Route path='/cart' element = { <Cart/> } />
               <Route path='/categoria/:id' element = { <ItemListContainer/> } />
               <Route path='/*' element ={ <Navigate to ='/' replace /> }></Route>
+
             </Routes>
 
         </div>

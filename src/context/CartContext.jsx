@@ -13,22 +13,50 @@ const CartContextProvider = ({children}) => {
 
     const [cartList, setCartList] = useState([]) // Es un array porque el carrito es un array de objetos
     
-    function addToCart(item) {
+    function isInCart(id) {
+        return cartList.some(a => a.id === id)
+    }
+
+    function addToCart(item) { 
+
+        if (isInCart(item.id)) {
+            let i = cartList.findIndex(a => a.id === item.id);
+            const newCartList = cartList;
+            newCartList[i].cantidad += item.cantidad;
+            setCartList(newCartList)
+        } else {
+
         setCartList(
-            [...cartList, item])        
+            [...cartList, item])  }      
     }
 
     function vaciarCart() {
         setCartList([])
     }
 
+     // isInCart (para el duplicado), 
+    // addToCart, 
+    // deleteItem, 
+    // totalPrice, 
+    // totalQty
 
+    function totalQty() {
+    if(cartList.length > 0 ) {  return   cartList.map(a => a.cantidad).reduce((a, b) => a + b)} else {
+        return 0
+    }
+    }
+
+    
+
+
+console.log(totalQty())
 
     return (
         <CartContext.Provider value={ {
             cartList,
             addToCart,
-            vaciarCart
+            vaciarCart,
+            totalQty
                     
         } }>
             {children} 

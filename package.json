@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "@uiball/loaders": "^1.2.6",
+    "firebase": "^9.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-promise": "^3.0.2",

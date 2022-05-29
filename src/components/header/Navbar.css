@@ -73,6 +73,25 @@ nav {
 
 }
 
+.homecart {
+    display: flex;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.cartcant {
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    text-align: center;
+    letter-spacing: 0.2rem;
+}
 
 
 .link {

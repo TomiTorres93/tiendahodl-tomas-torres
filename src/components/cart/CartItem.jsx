@@ -4,18 +4,18 @@ import { useCartContext } from '../../context/CartContext'
 
 
 
-export default function CartItem({id, producto, tipo, cantidad, precio, }) {
+export default function CartItem({id, producto, tipo, cantidad, precio, img }) {
 
     const {cartList, vaciarCart} = useCartContext()
     const [itemcartcount, setItemcartcount] = useState({cantidad})
 
 ///
 function Add() {
-    setItemcartcount( cantidad + 1)
+    setItemcartcount( itemcartcount + 1)
  } 
   ///
   function Remove() {
-    setItemcartcount( cantidad - 1)
+    setItemcartcount( itemcartcount - 1)
  }
   
   

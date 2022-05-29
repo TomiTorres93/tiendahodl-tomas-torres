@@ -62,8 +62,7 @@
 }
 
 .carritoprecio {
-    width: 20%;
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-top: 1rem;
     font-weight: bolder;
 
@@ -80,6 +79,13 @@
     font-size: 0.8rem;
     margin: 0;
 }
+
+.carritocanteliminar {
+    width: 1rem;
+    margin: 0;
+    filter: invert(1);
+}
+
 
 .prodtipocont {
     width: 100%;
@@ -99,7 +105,7 @@
 }
 
 .carritocantcont {
-    width: 80%;
+    width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: row;
@@ -119,4 +125,25 @@
     aspect-ratio: 1/1;
     
 
+}
+
+.vaciarcarrito {
+    color: white;
+    font-size: 0.8rem;
+    background-color: rgb(192, 104, 104);
+    padding: 0.5rem 1rem;
+    margin: 1rem auto;
+    width: fit-content;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    opacity: 50%;
+    filter: blur(0.8px);
+}
+
+.vaciarcarrito:hover {
+    opacity: 100%;
+    letter-spacing: 0.13rem;
+    filter: blur(0px);
+    background-color: rgb(192, 104, 104);
 }

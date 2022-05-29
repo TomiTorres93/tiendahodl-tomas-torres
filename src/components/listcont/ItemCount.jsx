@@ -6,8 +6,6 @@ import carritoadd from './img/carritoadd.png';
 export default function ItemCount({stock, itemcount, onAdd, add, remove, count}) {
 
 
-
-
   return (
     <>
       <div  className='contador-cont' >
