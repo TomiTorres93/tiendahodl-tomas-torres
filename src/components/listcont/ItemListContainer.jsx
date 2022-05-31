@@ -92,10 +92,6 @@ function ItemListContainer( ) {
   GORRAS
   </Link>
 
-  <Link className='link filterelement'  to={`/detalle/${randomID}`}>
-  PICK RANDOM
-  </Link>
-
   <Link className='link filterelement' to={`/`}>
   VER TODO
   </Link>

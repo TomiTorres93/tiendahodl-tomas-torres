@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Titulo from '../texts/Titulo';
 import { useCartContext } from '../../context/CartContext'
 import CartItem from './CartItem';
+import { Link } from "react-router-dom"
 
 
 
@@ -11,7 +12,7 @@ import CartItem from './CartItem';
 export default function Cart({  }) {
 
 
-  const {cartList, vaciarCart} = useCartContext()
+  const {cartList, vaciarCart, eliminarItem} = useCartContext()
   
 
 console.log(cartList)
@@ -25,7 +26,7 @@ function precioFinal() {
   console.log(cartList.length)
 
   if (cartList.length > 0) {
-    return cartList.map(a => a.precio).reduce((a, b) => a + b)
+    return cartList.map(a => a.precio).reduce((a, b) => a + b).toLocaleString('de-DE')
   }}
 
 
@@ -52,6 +53,14 @@ function AddU() {
 
   return (
     <>
+        { cartList.length === 0 ?
+    <Link className='link ' to={"/"}>
+            <div className='vaciarcarrito carritovacio'>
+            ¡CARRITO VACÍO! <br /> <br />
+        <img className='backhomeimg' src="https://img.icons8.com/ios/50/000000/home--v1.png"/>
+          </div></Link> :
+          
+    <>
     <Titulo texto="Carrito de compras" />
 
   
@@ -62,42 +71,35 @@ function AddU() {
         <p className='micarritotitulo'> Mi Carrito</p>  
         {cartList.map((items) =>  
                 <>
-                <div className='micarritoitemscont'> 
-                <img className='fotocart' src={items.img} alt="" />
-       
-                <div className='prodtipocont'>  
-                <p className='carritoprod'> {items.nombre}</p>
-                <p className='carritotipo'> {items.categoria}</p>
-                <p className='carritotipo'> ${items.precioU} x u.</p>
-                </div>
-       
-                <div className='cantpreciocont'>
-                <div className='carritocantcont'>
-                <p className='carritocant'> {items.cantidad}</p>
-                <img className='carritocanteliminar'  src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/>
-                </div>
-                <p className='carritoprecio'> ${items.precio}</p>
-       
-                </div>
-                </div>
+                 <CartItem items={items} key={items.id} nombre={items.nombre}  tipo={items.tipo} cantidad={items.cantidad} precio={items.precio} categoria={items.categoria} precioU={items.precioU} img={items.img} />
+
                 </> )}
 
 
-      {/* //  producto={items.nombre} tipo={items.categoria} cantidad={items.stock} precio={items.precio} img={items.imgpro}
- */}
+
+      <div className='vaciarcarrito' onClick={vaciarCarrito}>
+      VACIAR CARRITO
+    </div>
     
-    <div className='vaciarcarrito' onClick={vaciarCarrito}>
-                  VACIAR CARRITO
-                </div>
+
       </div>    
 
       <div className='resumendelpedidocont'>
-        <p className='micarritotitulo'> Resumen del pedido</p> 
-        <p> Precio final:  ${precioFinal()} </p>
+        <p className='micarritotitulo'> Resumen del pedido</p>
+        {cartList.map((items) =>  
+                <div className='detallecartrow' >
+                 <p className='detallecartrownombre'>{items.nombre}</p> 
+                 <p className='detallecartrowcant'>{items.cantidad}</p>
+                 <p className='detallecartrowprecio'>${items.precio}</p>
+
+                </div >
+                  )}
+         <p className='carritoprecio'>Precio final:  </p>         
+        <p className='carritoprecio'> ${precioFinal()} </p>
 
       </div>
     </div>
-
-    </>
-  )
+</>
+    } </>
+  ) 
 } 

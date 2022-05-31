@@ -4,9 +4,9 @@ import { useCartContext } from '../../context/CartContext'
 
 
 
-export default function CartItem({id, producto, tipo, cantidad, precio, img }) {
+export default function CartItem({precioU, cantidad, precio, img, categoria, nombre, items}) {
 
-    const {cartList, vaciarCart} = useCartContext()
+    const {cartList, vaciarCart, eliminarItem} = useCartContext()
     const [itemcartcount, setItemcartcount] = useState({cantidad})
 
 ///
@@ -17,20 +17,33 @@ function Add() {
   function Remove() {
     setItemcartcount( itemcartcount - 1)
  }
-  
-  
+
+ 
+const elimItem = () => {
+  eliminarItem(items.id)
+}
 
 
   return (
-    <div className='micarritoitemscont'> 
-    <p className='carritoprod'> {producto}</p>
-    <p className='carritotipo'> {tipo}</p>
-    <p className='carritocant'> {cantidad}</p>
-    <p className='carritoprecio'> ${precio}</p>
-    <button className='AddRemoveButton topleftradius' onClick={Remove}>-</button>
-    <div className='contador'>{itemcartcount}</div>
-    <button className='AddRemoveButton toprightradius' onClick={Add}>+</button> 
-    </div>
-
+<div className='micarritoitemscont'> 
+                <img className='fotocart' src={img} alt="" />
+       
+                <div className='prodtipocont'>  
+                <p className='carritoprod'> {nombre}</p>
+                <p className='carritotipo'> {categoria}</p>
+                <p className='carritotipo'> ${precioU} x u.</p>
+                </div>
+       
+                <div className='cantpreciocont'>
+                <div className='carritocantcont'>
+                <p className='carritocant'> {cantidad}</p>
+                <img className='carritocanteliminar' onClick={elimItem}  src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/>
+                </div>
+                <p className='carritoprecio'> ${precio}</p>
+       
+                </div>
+                </div>
   )
 }
+
+

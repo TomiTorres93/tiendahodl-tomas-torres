@@ -18,7 +18,7 @@ const CartContextProvider = ({children}) => {
     }
 
     function addToCart(item) { 
-
+    
         if (isInCart(item.id)) {
             let i = cartList.findIndex(a => a.id === item.id);
             const newCartList = cartList;
@@ -33,6 +33,14 @@ const CartContextProvider = ({children}) => {
     function vaciarCart() {
         setCartList([])
     }
+
+    function eliminarItem(id) { 
+
+        setCartList(cartList.filter(prod => prod.id !== id))
+    }
+
+
+
 
      // isInCart (para el duplicado), 
     // addToCart, 
@@ -56,7 +64,8 @@ console.log(totalQty())
             cartList,
             addToCart,
             vaciarCart,
-            totalQty
+            totalQty,
+            eliminarItem
                     
         } }>
             {children} 

@@ -127,7 +127,13 @@
 
 }
 
+.backhomeimg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 .vaciarcarrito {
+    text-decoration: none;
     color: white;
     font-size: 0.8rem;
     background-color: rgb(192, 104, 104);
@@ -143,7 +149,55 @@
 
 .vaciarcarrito:hover {
     opacity: 100%;
-    letter-spacing: 0.13rem;
+    letter-spacing: 0.10rem;
     filter: blur(0px);
     background-color: rgb(192, 104, 104);
 }
+
+
+.detallecartrow {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.detallecartrownombre, .detallecartrowcant, .detallecartrowprecio {
+font-size: 0.7rem;
+}
+
+.detallecartrownombre {
+ width: 50%;
+}
+
+.detallecartrowcant {
+width: 25%;
+}
+
+.detallecartrowprecio {
+    width: 25%;
+    }
+
+
+.carritovacio {
+    margin-top: 20rem;
+    animation: jump infinite 2s ease-in-out;
+
+}
+
+.carritovacio:hover {
+    filter: blur(0);
+    animation: none;
+}
+
+
+
+@keyframes jump {
+    0% {filter: blur(0);}
+
+    50% {filter: blur(3px);
+    color: rgb(120,168,141);
+transform: translateY(5px);}  
+
+    100% {filter: blur(0);}
+}
+
