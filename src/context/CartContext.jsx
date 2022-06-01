@@ -21,6 +21,7 @@ const CartContextProvider = ({children}) => {
     
         if (isInCart(item.id)) {
             let i = cartList.findIndex(a => a.id === item.id);
+            console.log(i)
             const newCartList = cartList;
             newCartList[i].cantidad += item.cantidad;
             setCartList(newCartList)
