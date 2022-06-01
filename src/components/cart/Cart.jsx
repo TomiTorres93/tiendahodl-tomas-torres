@@ -56,7 +56,7 @@ function AddU() {
         { cartList.length === 0 ?
     <Link className='link ' to={"/"}>
             <div className='vaciarcarrito carritovacio'>
-            ¡CARRITO VACÍO! <br /> <br />
+            CARRITO VACÍO <br /> <br />
         <img className='backhomeimg' src="https://img.icons8.com/ios/50/000000/home--v1.png"/>
           </div></Link> :
           
@@ -71,7 +71,7 @@ function AddU() {
         <p className='micarritotitulo'> Mi Carrito</p>  
         {cartList.map((items) =>  
                 <>
-                 <CartItem items={items} key={items.id} nombre={items.nombre}  tipo={items.tipo} cantidad={items.cantidad} precio={items.precio} categoria={items.categoria} precioU={items.precioU} img={items.img} />
+                 <CartItem items={items} key={items.id} nombre={items.nombre}  tipo={items.tipo} cantidad={items.cantidad} precio={items.precio.toLocaleString('de-DE')} categoria={items.categoria} precioU={items.precioU.toLocaleString('de-DE')} img={items.img} />
 
                 </> )}
 
@@ -89,14 +89,15 @@ function AddU() {
         {cartList.map((items) =>  
                 <div className='detallecartrow' >
                  <p className='detallecartrownombre'>{items.nombre}</p> 
-                 <p className='detallecartrowcant'>{items.cantidad}</p>
-                 <p className='detallecartrowprecio'>${items.precio}</p>
+                 <p className='detallecartrowcant'>{items.cantidad} u.</p>
+                 <p className='detallecartrowprecio'>${items.precio.toLocaleString('de-DE')}</p>
 
                 </div >
                   )}
-         <p className='carritoprecio'>Precio final:  </p>         
-        <p className='carritoprecio'> ${precioFinal()} </p>
-
+        <div className='detallecartrow'>          
+        <p className='carritopreciototaltit'>TOTAL </p>         
+        <p className='carritoprecio2'> ${precioFinal()} </p>
+        </div>
       </div>
     </div>
 </>

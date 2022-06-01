@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './ItemListContainer.css';
-import ProductosCont from '../productos/ProductosCont'
 import Loader from './Loader';
 import ItemCount from '../listcont/ItemCount';
 import AfterCount from '../listcont/AfterCount';

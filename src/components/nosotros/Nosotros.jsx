@@ -15,11 +15,23 @@ function Nosotros() {
         
   <div className='itemsCont'>
 
-      <Card  id="carduno"   img={designer} producto="JUAN CARLOS" descripcion="Diseñador gráfico"/>
+  <div className="cardcont" >
+        <img   src={designer}  className="cardimg" alt="Diseñador gráfico" />
+        <p className="cardTitulo">JUAN CARLOS</p>
+        <p className="cardDescripcion">Diseñador gráfico</p>
+  </div>
 
-      <Card  id="carduno"   img={dev} producto="COSITORTO" descripcion="Gerente de marketing" />
-      <Card  id="carduno"   img={marketing} producto="CHANTI" descripcion="Desarrollador web" />
+  <div className="cardcont" >
+        <img   src={dev}  className="cardimg" alt="Gerente de marketing" />
+        <p className="cardTitulo">COSITORTO</p>
+        <p className="cardDescripcion">Gerente de marketing</p>
+  </div>
 
+  <div className="cardcont" >
+        <img   src={marketing}  className="cardimg" alt="Desarrollador web" />
+        <p className="cardTitulo">CHANTI</p>
+        <p className="cardDescripcion">Desarrollador web</p>
+  </div>
 
   </div>
   </>  

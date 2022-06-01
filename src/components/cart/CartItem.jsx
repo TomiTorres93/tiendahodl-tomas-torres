@@ -35,11 +35,13 @@ const elimItem = () => {
                 </div>
        
                 <div className='cantpreciocont'>
-                <div className='carritocantcont'>
-                <p className='carritocant'> {cantidad}</p>
-                <img className='carritocanteliminar' onClick={elimItem}  src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/>
-                </div>
-                <p className='carritoprecio'> ${precio}</p>
+
+                  <div className='carritocantcont'>
+                    <p className='carritocant'> {cantidad}</p>
+                    <img className='carritocanteliminar' onClick={elimItem}  src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/>
+                  </div>
+                  
+                  <p className='carritoprecio'> ${precio}</p>
        
                 </div>
                 </div>
