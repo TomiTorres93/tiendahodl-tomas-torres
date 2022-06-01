@@ -71,7 +71,7 @@ function AddU() {
         <p className='micarritotitulo'> Mi Carrito</p>  
         {cartList.map((items) =>  
                 <>
-                 <CartItem items={items} key={items.id} nombre={items.nombre}  tipo={items.tipo} cantidad={items.cantidad} precio={items.precio.toLocaleString('de-DE')} categoria={items.categoria} precioU={items.precioU.toLocaleString('de-DE')} img={items.img} />
+                 <CartItem items={items} key={items.id} nombre={items.nombre}  tipo={items.tipo} cantidad={items.cantidad} precio={(items.precioU * items.cantidad).toLocaleString('de-DE')} categoria={items.categoria} precioU={items.precioU.toLocaleString('de-DE')} img={items.img} />
 
                 </> )}
 

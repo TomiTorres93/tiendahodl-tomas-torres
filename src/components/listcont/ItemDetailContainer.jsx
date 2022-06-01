@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom';
-import { getFetch } from '../../data';
 import {getFirestore, doc, getDoc, collection, getDocs} from "firebase/firestore"
 
 
@@ -33,7 +32,6 @@ function ItemListContainer({}) {
 
 
   <ItemDetail id={productos.id} imgpro={productos.imgpro} img={productos.img} nombre={productos.nombre} precio={productos.precio} descripcion={productos.descripcion} cantidad={productos.stock} loading={loading}/>
-  
   </>  
   ); }
 

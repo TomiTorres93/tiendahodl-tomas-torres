@@ -73,24 +73,31 @@
 
 .carritoprecio {
     font-size: 1.2rem;
-    margin-top: 1rem;
     font-weight: bolder;
     margin: 0 auto;
     background-color: white;
     color: black;
-    padding: 0.1rem 1rem 0.5rem;
+    padding: 0.1rem  1rem 0.5rem 1rem ;
     border-radius: 0 0 10px 10px;
+
+
+}
+
+.carritocant {
+    font-size: 0.8rem;
+    margin: 0;
+
 }
 
 
+
 .carritocantcont {
-    height: fit-content;
     display: flex;
     flex-direction: row;
     border: 1px white solid;
     justify-content:space-evenly;
     justify-items: center;
-    padding: 0.5rem 0.1rem;
+    padding: 0.5rem 0rem;
     margin-top: 2rem;
     border-radius: 10px 0 0 0;
 
@@ -109,14 +116,10 @@
     margin: 0;
 }
 
-.carritocant {
-    font-size: 0.8rem;
-    margin: 0;
-}
 
 .carritocanteliminar {
     width: 1rem;
-    margin: 0;
+    margin: 0rem;
     filter: invert(1);
 }
 
@@ -130,7 +133,7 @@
 }
 
 .cantpreciocont {
-    width: 20%;
+
     display: flex;
     flex-direction: column;
     text-align: left;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-
 import './Navbar.css';
 import carritopng from './img/carrito.png';
 import { Link } from 'react-router-dom';
@@ -13,7 +12,6 @@ function Carrito() {
 
   const totalCarrito = totalQty()
   
- 
   console.log(totalCarrito)
 
     return (

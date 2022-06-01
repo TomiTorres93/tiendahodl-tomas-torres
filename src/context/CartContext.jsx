@@ -13,22 +13,35 @@ const CartContextProvider = ({children}) => {
 
     const [cartList, setCartList] = useState([]) // Es un array porque el carrito es un array de objetos
     
+
+    
+    function totalQty() {
+        if(cartList.length > 0 ) {  return   cartList.map(a => a.cantidad).reduce((a, b) => a + b)} else {
+            return 0
+        }
+        }
+
     function isInCart(id) {
         return cartList.some(a => a.id === id)
     }
 
+
     function addToCart(item) { 
-    
-        if (isInCart(item.id)) {
-            let i = cartList.findIndex(a => a.id === item.id);
+        let i = cartList.findIndex(a => a.id === item.id);
+
+        if (i !== -1) {
+ 
             console.log(i)
-            const newCartList = cartList;
-            newCartList[i].cantidad += item.cantidad;
-            setCartList(newCartList)
+            const cantidadVieja = cartList[i].cantidad;
+
+            cartList[i].cantidad = cantidadVieja + item.cantidad;
+
+            setCartList([...cartList])
         } else {
 
         setCartList(
-            [...cartList, item])  }      
+            [...cartList, item])  }   
+            
     }
 
     function vaciarCart() {
@@ -49,11 +62,6 @@ const CartContextProvider = ({children}) => {
     // totalPrice, 
     // totalQty
 
-    function totalQty() {
-    if(cartList.length > 0 ) {  return   cartList.map(a => a.cantidad).reduce((a, b) => a + b)} else {
-        return 0
-    }
-    }
 
     
 

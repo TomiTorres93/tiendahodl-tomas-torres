@@ -14,8 +14,6 @@ function Navbar() {
     <a className="menu-item borde1" href="">HOME</a>
   </Link>
 
-    {/* <a className="menu-item borde2" href="">PRODUCTOS</a> */}
-
   <Link className='link' to={`/nosotrxs`}>
     <a className="menu-item borde3" href="">NOSOTRXS</a>
   </Link>
@@ -23,7 +21,6 @@ function Navbar() {
   <Link className='link' to={`/contacto`}>
     <a className="menu-item borde4" href="">CONTACTO</a>
   </Link>
-  
   </ul>
   <Link className='link' to={`/cart`}>  <Carrito /></Link>
 
