@@ -17,8 +17,10 @@ function Carrito() {
     return (
 <>
   <Link to='/cart' className='homecart'>
-  <p className='cartcant'>{totalCarrito}</p>
-  <img src={carritopng} className="logoCarrito" alt="carrito de compras" />
+  <div>
+   <span>  <img src={carritopng} className="logoCarrito" alt="carrito de compras" /></span>
+   <span className='cartcant'>{totalCarrito}</span>
+  </div>
 
   </Link>
   

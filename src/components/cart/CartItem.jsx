@@ -30,7 +30,7 @@ const elimItem = () => {
        
                 <div className='prodtipocont'>  
                 <p className='carritoprod'> {nombre}</p>
-                <p className='carritotipo'> {categoria}</p>
+                <p className='carritotipo'> {categoria.toUpperCase()}</p>
                 <p className='carritotipo'> ${precioU} x u.</p>
                 </div>
        

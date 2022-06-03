@@ -5,7 +5,7 @@ import ItemCount from '../listcont/ItemCount';
 import AfterCount from '../listcont/AfterCount';
 import { useCartContext } from '../../context/CartContext'
 
-function ItemDetail({id, img, imgpro, nombre, descripcion, loading, cantidad, precio}) {
+function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, cantidad, precio}) {
     
     const loaders = [1];
     
@@ -26,7 +26,7 @@ function ItemDetail({id, img, imgpro, nombre, descripcion, loading, cantidad, pr
        const {addToCart, cartList} = useCartContext()
     
        const onAdd = () => {
-            addToCart({ id: id, img: imgpro, nombre, tipo, cantidad: count, precioU: precio, precio: (precio * count)}) }
+            addToCart({ id: id, img: imgpro, nombre, categoria, tipo, cantidad: count, precioU: precio, precio: (precio * count)}) }
     
             console.log(cartList)
     

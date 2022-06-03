@@ -21,19 +21,17 @@ const CartContextProvider = ({children}) => {
         }
         }
 
-    function isInCart(id) {
-        return cartList.some(a => a.id === id)
-    }
-
-
     function addToCart(item) { 
         let i = cartList.findIndex(a => a.id === item.id);
 
         if (i !== -1) {
  
-            console.log(i)
+            
             const cantidadVieja = cartList[i].cantidad;
+            const precioTotalViejo = cartList[i].precio;
 
+
+            cartList[i].precio = precioTotalViejo + (item.cantidad * item.precioU)
             cartList[i].cantidad = cantidadVieja + item.cantidad;
 
             setCartList([...cartList])
@@ -41,8 +39,9 @@ const CartContextProvider = ({children}) => {
 
         setCartList(
             [...cartList, item])  }   
-            
-    }
+
+ 
+    } 
 
     function vaciarCart() {
         setCartList([])
@@ -54,6 +53,7 @@ const CartContextProvider = ({children}) => {
     }
 
 
+    
 
 
      // isInCart (para el duplicado), 

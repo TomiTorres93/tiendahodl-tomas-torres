@@ -1,9 +1,11 @@
 import './Cart.css';
 import React, { useEffect, useState, useContext } from 'react';
 import Titulo from '../texts/Titulo';
-import { useCartContext } from '../../context/CartContext'
 import CartItem from './CartItem';
+
+import { useCartContext } from '../../context/CartContext'
 import { Link } from "react-router-dom"
+import { doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
 
 
 
@@ -13,20 +15,13 @@ export default function Cart({  }) {
 
 
   const {cartList, vaciarCart, eliminarItem} = useCartContext()
-  
-
-console.log(cartList)
-
-
-const initialValue = 0;
+  const db = getFirestore()
 
 
 function precioFinal() {
-
-  console.log(cartList.length)
-
   if (cartList.length > 0) {
-    return cartList.map(a => a.precio).reduce((a, b) => a + b).toLocaleString('de-DE')
+    
+    return cartList.map(a => (a.precio)).reduce((a, b) => a + b).toLocaleString('de-DE')
   }}
 
 
@@ -37,14 +32,53 @@ const vaciarCarrito = () => {
   vaciarCart()
 }
 
-// ///
-// function Add() {
-//   setItemcartcount( itemcartcount + 1)}
 
-// ///
-// function Remove() {
-//   setItemcartcount( itemcartcount - 1)
-//    if (itemcartcount == 0) {setItemcartcount( itemcartcount )} }
+const finalizarCompra = async() => {
+
+    // console.log(cartList.map(carrito => ({cliente:["Pedro", 123213, "pepe@gmail.com"], items:[carrito.id, carrito.nombre, carrito.precio], total: [precioTotal]}))) 
+
+    let order = {}
+
+    order.cliente = {nombre: "Carlos", email: "carlos@gmail.com", telefono: "213213"}
+    order.total = precioFinal()
+
+
+     order.items = cartList.map(carrito => {
+      let id = carrito.id
+      let categoria = carrito.categoria
+      let nombre =  carrito.nombre 
+      let precio = carrito.precio
+      let cantidad = carrito.cantidad
+    
+    return  {id, categoria, nombre, precio, cantidad}
+  })
+
+  const queryCollection = collection(db, "orders")
+  addDoc(queryCollection, order)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+  .finally((() => vaciarCarrito()))
+
+
+  const queryCollectionStock = collection(db, "productos")
+  const queryActualizarStock = await query(
+   queryCollectionStock,
+   where(documentId(), 'in', cartList.map(carritoid => carritoid.id))
+  )
+
+  const batch = writeBatch(db)
+
+  await getDocs(queryActualizarStock)
+  .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
+    stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
+  })))
+  .finally(()=> console.log("actualizado"))
+
+  batch.commit()
+  }
+
+
+
 
 function AddU() {
     console.log(cartList.map(a => a.cantidad) + 1)
@@ -88,16 +122,33 @@ function AddU() {
         <p className='micarritotitulo'> Resumen del pedido</p>
         {cartList.map((items) =>  
                 <div className='detallecartrow' >
-                 <p className='detallecartrownombre'>{items.nombre}</p> 
+                 <p className='detallecartrownombre'>{items.nombre} <span className='catDetalle'>{items.categoria.toUpperCase()}</span> </p> 
                  <p className='detallecartrowcant'>{items.cantidad} u.</p>
-                 <p className='detallecartrowprecio'>${items.precio.toLocaleString('de-DE')}</p>
+                 <p className='detallecartrowprecio'>${(items.precioU * items.cantidad).toLocaleString('de-DE')}</p>
 
                 </div >
                   )}
-        <div className='detallecartrow'>          
-        <p className='carritopreciototaltit'>TOTAL </p>         
-        <p className='carritoprecio2'> ${precioFinal()} </p>
+       
+          <p className='micarritotitulo'> Envío</p>
+          <div className='detallecartrow' >
+          <p className='detallecartrownombre'>Normal - Envío Nacional</p>
+          <p className='detallecartrowcant'> 5 a 7 días</p>
+          <p className='detallecartrowprecio'>$750</p>
+          </div>
+
+          <div className='detallecartrow' >
+          <p className='detallecartrownombre'>Express - Envío Nacional</p>
+          <p className='detallecartrowcant'> 2 a 3 días</p>
+          <p className='detallecartrowprecio'>$1150</p>
+          </div>
+        
+
+        <div className='carritoTotalCont'>          
+          <p className=''> <span className='carritopreciototaltit'>TOTAL</span> <span className='carritoprecio2'>${precioFinal()}</span> </p>         
         </div>
+
+
+        <p className='vaciarcarrito' onClick={finalizarCompra}>FINALIZAR COMPRA</p>
       </div>
     </div>
 </>

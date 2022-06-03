@@ -62,13 +62,14 @@
 }
 
 .carritopreciototaltit {
-    font-size: 1rem;
-    font-weight: bolder;
-    background-color: rgb(192, 104, 104);
-    width: fit-content;
-    height: fit-content;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    position: relative;
+    bottom: 0.2rem;
+    margin-right: 1rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 0 5px 5px 5px;
+    border: rgb(255, 255, 255, 20%) 1px solid;
+    background-color: #2e333d;
 }
 
 .carritoprecio {
@@ -100,12 +101,12 @@
     padding: 0.5rem 0rem;
     margin-top: 2rem;
     border-radius: 10px 0 0 0;
-
+    transition: 0.2s all ease-in-out;
 }
 
+
 .carritoprecio2 {
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
     font-weight: bolder;
 }
 
@@ -113,7 +114,8 @@
     width: 100%;
     letter-spacing: 0.3rem;
     font-weight: lighter;
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0.2rem;
 }
 
 
@@ -121,6 +123,13 @@
     width: 1rem;
     margin: 0rem;
     filter: invert(1);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.carritocanteliminar:hover {
+    filter: invert(0.6);
+
 }
 
 
@@ -180,8 +189,23 @@
 .detallecartrow {
     display: flex;
     flex-direction: row;
+    background-color: #2e333d;
+    margin: 0.2rem 0;
+    padding: 0;
+    border-radius: 0 5px 5px 5px;
+    border: rgb(255, 255, 255, 20%) 1px solid;
 }
 
+.carritoTotalCont {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: center;
+}
+
+.catDetalle{
+    opacity: 35%;
+}
 
 .detallecartrownombre, .detallecartrowcant, .detallecartrowprecio {
 font-size: 0.7rem;
@@ -189,6 +213,7 @@ font-size: 0.7rem;
 
 .detallecartrownombre {
  width: 50%;
+ padding-left: 0.5rem;
 }
 
 .detallecartrowcant {
@@ -197,7 +222,7 @@ width: 25%;
 
 .detallecartrowprecio {
     width: 25%;
-    }
+}
 
 
 .carritovacio {

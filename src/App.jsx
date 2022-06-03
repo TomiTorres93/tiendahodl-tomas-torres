@@ -12,6 +12,8 @@ import './App.css';
  import Nosotros from './components/nosotros/Nosotros';
  import Cart from './components/cart/Cart';
 import CartContextProvider from './context/CartContext';
+import Panel from './firebase/Panel';
+
 
 
  function App() {
@@ -32,7 +34,7 @@ import CartContextProvider from './context/CartContext';
               <Route path='/cart' element = { <Cart/> } />
               <Route path='/categoria/:id' element = { <ItemListContainer/> } />
               <Route path='/*' element ={ <Navigate to ='/' replace /> }></Route>
-
+              <Route path='/panel' element = { <Panel/> } />
             </Routes>
 
         </div>
