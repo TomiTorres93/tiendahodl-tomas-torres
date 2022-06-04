@@ -4,7 +4,7 @@ import Titulo from '../texts/Titulo';
 import CartItem from './CartItem';
 import { useCartContext } from '../../context/CartContext'
 import { Link } from "react-router-dom"
-import { doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
+import { getDoc, doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
 
 
 
@@ -34,8 +34,6 @@ const vaciarCarrito = () => {
 
 const finalizarCompra = async() => {
 
-    // console.log(cartList.map(carrito => ({cliente:["Pedro", 123213, "pepe@gmail.com"], items:[carrito.id, carrito.nombre, carrito.precio], total: [precioTotal]}))) 
-
     let order = {}
 
     order.cliente = {nombre: "Carlos", email: "carlos@gmail.com", telefono: "213213"}
@@ -48,8 +46,9 @@ const finalizarCompra = async() => {
       let nombre =  carrito.nombre 
       let precio = carrito.precio
       let cantidad = carrito.cantidad
+      let talle = carrito.talle
     
-    return  {id, categoria, nombre, precio, cantidad}
+    return  {id, categoria, nombre, precio, cantidad, talle}
   })
 
   const queryCollection = collection(db, "orders")
@@ -59,23 +58,22 @@ const finalizarCompra = async() => {
   .finally((() => vaciarCarrito()))
 
 
-  const queryCollectionStock = collection(db, "productos")
-  const queryActualizarStock = await query(
-   queryCollectionStock,
-   where(documentId(), 'in', cartList.map(carritoid => carritoid.id))
-  )
+  //  const queryCollectionStock = collection(db, "productos")
+  //  const queryActualizarStock = await query(
+  //   queryCollectionStock,
+  //   where(documentId(), 'in', cartList.map(carritoid => carritoid.id))
+  //  )
 
-  const batch = writeBatch(db)
+  //  const batch = writeBatch(db)
 
-  await getDocs(queryActualizarStock)
-  .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
-    stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
-  })))
-  .finally(()=> console.log("actualizado"))
+  //  await getDocs(queryActualizarStock)
+  //  .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
+  //    stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
+  //  })))
+  //  .finally(()=> console.log("actualizado"))
 
-  batch.commit()
-  }
-
+  //  batch.commit()
+   }
 
 
 
@@ -104,7 +102,7 @@ function AddU() {
         <p className='micarritotitulo'> Mi Carrito</p>  
         {cartList.map((items) =>  
                 <>
-                 <CartItem items={items} key={items.id} nombre={items.nombre}  tipo={items.tipo} cantidad={items.cantidad} precio={(items.precioU * items.cantidad).toLocaleString('de-DE')} categoria={items.categoria} precioU={items.precioU.toLocaleString('de-DE')} img={items.img} />
+                 <CartItem items={items} key={items.id} id={items.id} nombre={items.nombre}  tipo={items.tipo} cantidad={items.cantidad} precio={(items.precioU * items.cantidad).toLocaleString('de-DE')} categoria={items.categoria} precioU={items.precioU.toLocaleString('de-DE')} img={items.img}  talle={items.talle} />
 
                 </> )}
 
@@ -121,7 +119,7 @@ function AddU() {
         <p className='micarritotitulo'> Resumen del pedido</p>
         {cartList.map((items) =>  
                 <div className='detallecartrow' >
-                 <p className='detallecartrownombre'>{items.nombre} <span className='catDetalle'>{items.categoria.toUpperCase()}</span> </p> 
+                 <p className='detallecartrownombre'>{items.nombre} <span className='catDetalle'>{items.categoria.toUpperCase()}</span> <span className='catDetalle'>{items.talle.toUpperCase()}</span> </p> 
                  <p className='detallecartrowcant'>{items.cantidad} u.</p>
                  <p className='detallecartrowprecio'>${(items.precioU * items.cantidad).toLocaleString('de-DE')}</p>
 

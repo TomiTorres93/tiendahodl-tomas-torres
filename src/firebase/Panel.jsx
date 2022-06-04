@@ -16,9 +16,15 @@ export default function Panel() {
    const [imgpro, setImgpro] = useState("")
    const [descripcion, setDescripcion] = useState("")
    const [idPro, setIdPro] = useState("")
-   const [stock, setStock] = useState(0)
    const [categoria, setCategoria] = useState("")
    const [precio, setPrecio] = useState(0)
+   const [stockGorra, setStockGorra] = useState(0)
+   const [stockXS, setStockXS] = useState(0)
+   const [stockS, setStockS] = useState(0)
+   const [stockM, setStockM] = useState(0)
+   const [stockL, setStockL] = useState(0)
+   const [stockXL, setStockXL] = useState(0)
+
 
 
 
@@ -45,9 +51,11 @@ export default function Panel() {
         descripcion:descripcion,
         img:imgdis,
         imgpro:imgpro,
-        stock: Number(stock),
+        stock: [ stockGorra, {"xs":Number(stockXS)}, {"s" : Number(stockS)}, {"m" : Number(stockM)},{ "l" : Number(stockL)},{ "xl" : Number(stockXL)}] ,
         precio: Number(precio)
      })
+
+     
        .then(res => console.log(res))
        .catch(err => console.log(err))
         // .finally((() => console.log(nuevoProducto)))
@@ -75,9 +83,19 @@ export default function Panel() {
    
         <Input titulo="IMAGEN DEL PRODUCTO" tipo="text" name="imgpro" place="Ingresar IMGPRO" value={imgpro} onchange={(e) => setImgpro(e.target.value)}  />
 
-        <Input titulo="STOCK" tipo="text" name="stock" place="Ingresar stock" value={stock} onchange={(e) => setStock(e.target.value)}  />
-
         <Input titulo="PRECIO" tipo="text" name="precio" place="Ingresar precio" value={precio} onchange={(e) => setPrecio(e.target.value)}  />
+
+        <Input titulo="STOCK GORRA" tipo="text" name="stockGorra" place="Ingresar stock" value={stockGorra} onchange={(e) => setStockGorra(e.target.value)}  />
+
+        <Input titulo="STOCK XS" tipo="text" name="stockXS" place="Ingresar stock" value={stockXS} onchange={(e) => setStockXS(e.target.value)}  />
+
+        <Input titulo="STOCK S" tipo="text" name="stockS" place="Ingresar stock" value={stockS} onchange={(e) => setStockS(e.target.value)}  />
+
+        <Input titulo="STOCK M" tipo="text" name="stockM" place="Ingresar stock" value={stockM} onchange={(e) => setStockM(e.target.value)}  />
+
+        <Input titulo="STOCK L" tipo="text" name="stockL" place="Ingresar stock" value={stockL} onchange={(e) => setStockL(e.target.value)}  />
+
+        <Input titulo="STOCK XL" tipo="text" name="stockXL" place="Ingresar stock" value={stockXL} onchange={(e) => setStockXL(e.target.value)}  />
 
     <button className='agregarProducto' type='submit' onClick={ingresarProducto}> Ingresar producto</button>
 

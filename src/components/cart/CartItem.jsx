@@ -1,10 +1,10 @@
 import './Cart.css';
 import React, { useEffect, useState, useContext } from 'react';
 import { useCartContext } from '../../context/CartContext'
+import { getDoc, doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
 
 
-
-export default function CartItem({precioU, cantidad, precio, img, categoria, nombre, items}) {
+export default function CartItem({precioU, cantidad, precio, img, categoria, nombre, items, id, talle}) {
 
     const {cartList, vaciarCart, eliminarItem} = useCartContext()
     const [itemcartcount, setItemcartcount] = useState({cantidad})
@@ -24,6 +24,10 @@ const elimItem = () => {
 }
 
 
+
+
+
+
   return (
 <div className='micarritoitemscont'> 
                 <img className='fotocart' src={img} alt="" />
@@ -31,6 +35,7 @@ const elimItem = () => {
                 <div className='prodtipocont'>  
                 <p className='carritoprod'> {nombre}</p>
                 <p className='carritotipo'> {categoria.toUpperCase()}</p>
+                <p className='carritotipo'> TALLE {talle.toUpperCase()}</p>
                 <p className='carritotipo'> ${precioU} x u.</p>
                 </div>
        

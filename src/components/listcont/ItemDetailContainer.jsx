@@ -25,13 +25,12 @@ function ItemListContainer({}) {
   }, [])
 
 
-
     return (
   < >
 
 
 
-  <ItemDetail id={productos.id} imgpro={productos.imgpro} img={productos.img} nombre={productos.nombre} categoria={productos.categoria} precio={productos.precio} descripcion={productos.descripcion} cantidad={productos.stock} loading={loading}/>
+  <ItemDetail id={productos.id} imgpro={productos.imgpro} img={productos.img} nombre={productos.nombre} categoria={productos.categoria} precio={productos.precio} descripcion={productos.descripcion} cantidad={productos.stock} loading={loading} /> 
   </>  
   ); }
 

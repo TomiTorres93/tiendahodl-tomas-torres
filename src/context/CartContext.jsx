@@ -22,7 +22,7 @@ const CartContextProvider = ({children}) => {
         }
 
     function addToCart(item) { 
-        let i = cartList.findIndex(a => a.id === item.id);
+        let i = cartList.findIndex(a => a.id === item.id && a.talle === item.talle);
 
         if (i !== -1) {
  
