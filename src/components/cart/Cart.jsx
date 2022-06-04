@@ -2,7 +2,6 @@ import './Cart.css';
 import React, { useEffect, useState, useContext } from 'react';
 import Titulo from '../texts/Titulo';
 import CartItem from './CartItem';
-
 import { useCartContext } from '../../context/CartContext'
 import { Link } from "react-router-dom"
 import { doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
