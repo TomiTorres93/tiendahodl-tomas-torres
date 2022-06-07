@@ -4,7 +4,7 @@ import Titulo from '../texts/Titulo';
 import CartItem from './CartItem';
 import { useCartContext } from '../../context/CartContext'
 import { Link } from "react-router-dom"
-import { getDoc, doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
+import { setDoc, getDoc, doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
 
 
 
@@ -13,8 +13,10 @@ import { getDoc, doc, addDoc, getFirestore, collection, updateDoc, writeBatch, w
 export default function Cart({  }) {
 
 
-  const {cartList, vaciarCart, eliminarItem} = useCartContext()
+  const {cartList, vaciarCart, eliminarItem, ordersCantidad} = useCartContext()
   const db = getFirestore()
+
+  const [orderId, setOrderId] = useState("")
 
 
 function precioFinal() {
@@ -32,12 +34,18 @@ const vaciarCarrito = () => {
 }
 
 
+
+
 const finalizarCompra = async() => {
 
     let order = {}
 
+
+
+
     order.cliente = {nombre: "Carlos", email: "carlos@gmail.com", telefono: "213213"}
     order.total = precioFinal()
+    order.date = Date().substring(0,24)
 
 
      order.items = cartList.map(carrito => {
@@ -51,6 +59,7 @@ const finalizarCompra = async() => {
     return  {id, categoria, nombre, precio, cantidad, talle}
   })
 
+
   const queryCollection = collection(db, "orders")
   addDoc(queryCollection, order)
   .then(res => console.log(res))
@@ -58,21 +67,21 @@ const finalizarCompra = async() => {
   .finally((() => vaciarCarrito()))
 
 
-  //  const queryCollectionStock = collection(db, "productos")
-  //  const queryActualizarStock = await query(
-  //   queryCollectionStock,
-  //   where(documentId(), 'in', cartList.map(carritoid => carritoid.id))
-  //  )
+    // const queryCollectionStock = collection(db, "productos")
+    // const queryActualizarStock = await query(
+    // queryCollectionStock,
+    //  where(documentId(), 'in', cartList.map(carritoid => carritoid.id))
+    // )
 
-  //  const batch = writeBatch(db)
+    // const batch = writeBatch(db)
 
-  //  await getDocs(queryActualizarStock)
-  //  .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
-  //    stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
-  //  })))
-  //  .finally(()=> console.log("actualizado"))
+    // await getDocs(queryActualizarStock)
+    // .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
+    //   stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
+    // })))
+    // .finally(()=> console.log("actualizado"))
 
-  //  batch.commit()
+    // batch.commit()
    }
 
 

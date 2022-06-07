@@ -4,6 +4,7 @@ import Card from '../listcont/Item'
 import designer from './img/designer.png';
 import dev from './img/dev.png';
 import marketing from './img/marketing.png';
+import Loader from '../listcont/Loader';
 
 
 
@@ -12,6 +13,7 @@ function Nosotros() {
     return (
         < >
         <Titulo  texto="Nosotros" />
+
         
   <div className='itemsCont'>
 

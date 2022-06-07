@@ -54,3 +54,25 @@
     filter: blur(0px);
     background-color: rgb(192, 104, 104);
 }
+
+
+
+/* ORDENES */
+
+.ordenCont {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-size: 0.8rem;
+    background-color: #2e333d;
+    margin: 0.5rem auto;
+    padding: 0.5rem 2rem;
+    width: fit-content;
+    border-radius: 0 5px 5px 5px;
+    border: rgb(255, 255, 255, 20%) 1px solid;
+}
+
+.ordenData {
+    margin: 0 1rem;
+    
+}

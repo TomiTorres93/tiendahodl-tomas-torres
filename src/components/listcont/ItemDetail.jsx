@@ -5,15 +5,19 @@ import ItemCount from '../listcont/ItemCount';
 import AfterCount from '../listcont/AfterCount';
 import { useCartContext } from '../../context/CartContext'
 import { doc, getDoc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId, DocumentSnapshot} from 'firebase/firestore';
+import LoaderDetail from './LoaderDetail';
 
 function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, cantidad, precio}) {
     
-    const loaders = [1];
     const [stock, setStock] = useState(0)
     const [talle, setTalle] = useState("")
     const [botonTipo, setBotonTipo] = useState('itemcount')
     const [tipo, setTipo] = useState({})
     const [count, setCount] = useState(0)
+    const [itemImg, setItemImg] = useState("imgpro")
+
+
+    
  
     const itemcountChange = () => {
         if (botonTipo === "itemcount") {
@@ -40,13 +44,20 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
            setCount( count - 1)
             if (count == 0) {setCount( count )} }
 
+    ///
 
+    const cambiarImg =  ()  => {
+        return  setItemImg("img")
+        }        
+    ///
+
+    const cambiarImgPro =  ()  => {
+        return  setItemImg("imgpro")
+        }  
+
+        
 
     // FUNCIONES PARA ELEGIR TALLE
-
-
-
-
 
     async function stockGorra() { if  (categoria === "gorra") {
       const db = getFirestore()
@@ -105,10 +116,18 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
     <div className='ItemDetailListCont'>
 
     {loading
-    ? loaders.map((loader) => <Loader key={loader} />) : 
+    ? <LoaderDetail/> : 
 <div className='column'>
     <div className='itemdetailcont' id={id} >
-        <img src={imgpro} className="itemdetailimg" alt={nombre} />
+
+        <div className='imgContDetail'>
+        <img src={ itemImg === "imgpro" ? imgpro : img }    className="itemdetailimg" alt={nombre} />
+
+        <div className='cambiarImgBotonCont'>
+            <button onClick={cambiarImgPro} className='cambiarImgBoton'>⬤</button>
+            <button onClick={cambiarImg} className='cambiarImgBoton'>⬤</button>
+        </div>
+        </div>
         <div className='itemdetailDerCont'>
             <p className="itemdetailTitulo">{nombre}</p>
             <p className="itemdetailDescripcion">{descripcion}</p>

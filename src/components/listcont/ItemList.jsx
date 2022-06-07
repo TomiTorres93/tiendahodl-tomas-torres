@@ -6,8 +6,6 @@ import './ItemListContainer.css';
 
 export default function ItemList({ loading, items}) {
 
-    const loaders = [1];
-
  
   return (
 
@@ -15,7 +13,7 @@ export default function ItemList({ loading, items}) {
 
 
         {loading
-        ? loaders.map((loader) => <Loader key={loader} />) : 
+        ?         <Loader/> : 
 
 
         items.map((item) =>  <Item key={item.id} {...item}/>)}

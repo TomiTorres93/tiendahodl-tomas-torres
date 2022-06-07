@@ -1,4 +1,5 @@
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import { doc, getDoc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId, DocumentSnapshot} from 'firebase/firestore';
 
 
 
@@ -13,7 +14,6 @@ const CartContextProvider = ({children}) => {
 
     const [cartList, setCartList] = useState([]) // Es un array porque el carrito es un array de objetos
     
-
     
     function totalQty() {
         if(cartList.length > 0 ) {  return   cartList.map(a => a.cantidad).reduce((a, b) => a + b)} else {
@@ -38,9 +38,11 @@ const CartContextProvider = ({children}) => {
         } else {
 
         setCartList(
-            [...cartList, item])  }   
-
- 
+            [...cartList, item])  
+        
+        // localStorage.setCart(cartList)
+    
+    }  
     } 
 
     function vaciarCart() {
@@ -52,21 +54,34 @@ const CartContextProvider = ({children}) => {
         setCartList(cartList.filter(prod => prod.id !== id))
     }
 
+    async function  orders() { 
+    const db = getFirestore()
+
+    const q = query(collection(db, "orders"));
+    const querySnapshot = await getDocs(q);
+    console.log(querySnapshot.docs.length)
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data()
+
+
+        console.log(data);
+      })
+    }
+    
+    async function  ordersCantidad() { 
+        const db = getFirestore()
+        const q = query(collection(db, "orders"));
+      
+
+        return  await  getDocs(q).then(querySnapshot => console.log(querySnapshot.docs.length))
+
+    }
+        
+
+
 
     
-
-
-     // isInCart (para el duplicado), 
-    // addToCart, 
-    // deleteItem, 
-    // totalPrice, 
-    // totalQty
-
-
-    
-
-
-console.log(totalQty())
 
     return (
         <CartContext.Provider value={ {
@@ -74,7 +89,9 @@ console.log(totalQty())
             addToCart,
             vaciarCart,
             totalQty,
-            eliminarItem
+            eliminarItem,
+            orders,
+            ordersCantidad
                     
         } }>
             {children} 

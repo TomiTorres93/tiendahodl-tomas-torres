@@ -13,12 +13,14 @@ import './App.css';
  import Cart from './components/cart/Cart';
 import CartContextProvider from './context/CartContext';
 import Panel from './firebase/Panel';
+import Pagar from './components/cart/Pagar';
+import Ordenes from './firebase/Ordenes';
 
 
 
  function App() {
 
-  
+  const mercadopago = require("mercadopago")
 
    return (
      <BrowserRouter>
@@ -35,6 +37,8 @@ import Panel from './firebase/Panel';
               <Route path='/categoria/:id' element = { <ItemListContainer/> } />
               <Route path='/*' element ={ <Navigate to ='/' replace /> }></Route>
               <Route path='/panel' element = { <Panel/> } />
+              <Route path='/finalizar-compra' element = { <Pagar/> } />
+              <Route path='/ordenes' element = { <Ordenes/> } />
             </Routes>
 
         </div>
