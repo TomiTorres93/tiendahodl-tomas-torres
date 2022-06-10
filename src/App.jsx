@@ -20,7 +20,6 @@ import Ordenes from './firebase/Ordenes';
 
  function App() {
 
-  const mercadopago = require("mercadopago")
 
    return (
      <BrowserRouter>

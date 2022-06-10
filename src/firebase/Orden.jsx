@@ -20,8 +20,8 @@ export default function Orden({id, nombre, fecha, precio, items, email, telefono
 
 
     <div className='ordenCont'> 
-        <p className='ordenData'>{id.substring(0,5)}</p>
-        <p className='ordenData'>{fecha}</p>
+        <p className='ordenData'>#{id}</p>
+        <p className='ordenData'>{fecha.substring(0,21)}</p>
         <p className='ordenData'> {nombre}</p>
         <p className='ordenData'>{email}</p>
          <p className='ordenData'>{telefono}</p>

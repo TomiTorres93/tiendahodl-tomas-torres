@@ -30,93 +30,106 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
     
        const {addToCart, cartList} = useCartContext()
     
+  // FUNCIONES PARA ELEGIR TALLE CUANDO EL PRODUCTO ES UNA REMERA.
+  //SI EL PRODUCTO ES UNA GORRA EL STOCK SIEMPRE ESTARÁ GUARDADO EN EL LUGAR 0 DEL ARRAY DE STOCK, DENTRO DEL OBJETO.
+
+  async function stockGorra() { if  (categoria === "gorra") {
+    const db = getFirestore()
+    const queryDoc = doc(db, "productos", id)
+    const docSnap = await getDoc(queryDoc);
+    return setStock(docSnap.data().stock[0], setTalle("único"))
+
+   } }
+
+   stockGorra()
+
+  const talleXS = async ()  => {
+    const db = getFirestore()
+    const queryDoc = doc(db, "productos", id)
+    const docSnap = await getDoc(queryDoc);
+    return setStock(docSnap.data().stock[1].xs),  setTalle("xs")
+  }
+
+  const talleS = async ()  => {
+    const db = getFirestore()
+    const queryDoc = doc(db, "productos", id)
+    const docSnap = await getDoc(queryDoc);
+    return setStock(docSnap.data().stock[2].s),  setTalle("s")
+  }
+
+  const talleM = async ()  => {
+    const db = getFirestore()
+    const queryDoc = doc(db, "productos", id)
+    const docSnap = await getDoc(queryDoc);
+    return setStock(docSnap.data().stock[3].m),  setTalle("m")
+  }
+
+  const talleL = async ()  => {
+    const db = getFirestore()
+    const queryDoc = doc(db, "productos", id)
+    const docSnap = await getDoc(queryDoc);
+    return setStock(docSnap.data().stock[4].l),  setTalle("l")
+  }
+
+  
+  const talleXL = async ()  => {
+    const db = getFirestore()
+    const queryDoc = doc(db, "productos", id)
+    const docSnap = await getDoc(queryDoc);
+    return setStock(docSnap.data().stock[5].xl),  setTalle("xl")
+  }
+
+  const orden = cartList.length+1
+       // ESTA FUNCIÓN AGREGA EL ITEM AL CARRITO
        const onAdd = () => {
-            addToCart({ id: id, talle: talle, img: imgpro, nombre, categoria, tipo, cantidad: count, precioU: precio, precio: (precio * count)}) }
+         
+        // ESTA FUNCIÓN FILTER DEVUELVE LA CANTIDAD DE ITEMS IGUALES (mismo id y mismo talle, en el caso de las remeras) YA AGREGADOS EN EL CARRITO
+        function checkItemsEnCart() {
+          const filtrado = cartList.filter(mismoItem => mismoItem.id === id &&  mismoItem.talle === talle)
+          if(filtrado.length === 0) {return undefined}
+          if(cartList.length != 0)  { return filtrado[0].cantidad}
+        }
+        const resFilt = checkItemsEnCart()
+        // ESTE IF COMPRUEBA QUE NO SE PUEDAN AGREGAR AL CARRITO MÁS ITEMS QUE EL STOCK DISPONIBLE 
+        if(resFilt === undefined || (resFilt + count) <= stock ) {
+            addToCart({ orden: orden, id: id, talle: talle, img: imgpro, nombre, categoria, tipo, cantidad: count, precioU: precio, precio: (precio * count), stock: stock}) }
+
+         else {
+            alert("No puedes agregar tantos items")
+          }
+
+        }
     
-            console.log(cartList)
-    
-    ///
+    /// ESTA FUNCIÓN SUMA UN ITEM AL CONTADOR Y LIMITA LA CANTIDAD AL STOCK DISPONIBLE
        function Add() {
            setCount( count + 1)
            if (count == stock) {setCount( count )} } 
-    ///
-       function Remove() {
+    /// ESTA FUNCIÓN RESTA UN ITEM AL CONTADOR, QUE NUNCA PUEDE SER MENOR QUE 0
+    function Remove() {
            setCount( count - 1)
             if (count == 0) {setCount( count )} }
 
-    ///
+    /// ESTAS DOS FUNCIONES LAS USA EL SELECTOR DE FOTOS DEL ITEMDETAIL PARA CAMBIAR ENTRE UNA Y OTRA DEPENDIENDO DEL CÍRCULO QUE CLICKEEMOS
 
     const cambiarImg =  ()  => {
         return  setItemImg("img")
         }        
-    ///
-
     const cambiarImgPro =  ()  => {
         return  setItemImg("imgpro")
         }  
 
         
 
-    // FUNCIONES PARA ELEGIR TALLE
-
-    async function stockGorra() { if  (categoria === "gorra") {
-      const db = getFirestore()
-      const queryDoc = doc(db, "productos", id)
-      const docSnap = await getDoc(queryDoc);
-      return setStock(docSnap.data().stock[0])
-
-     } }
   
-  
-     stockGorra()
-  
-    const talleXS = async ()  => {
-      const db = getFirestore()
-      const queryDoc = doc(db, "productos", id)
-      const docSnap = await getDoc(queryDoc);
-      return setStock(docSnap.data().stock[1].xs),  setTalle("xs")
-
-    }
-  
-    
-    const talleS = async ()  => {
-      const db = getFirestore()
-      const queryDoc = doc(db, "productos", id)
-      const docSnap = await getDoc(queryDoc);
-      return setStock(docSnap.data().stock[2].s),  setTalle("s")
-    }
-  
-  
-  
-    const talleM = async ()  => {
-      const db = getFirestore()
-      const queryDoc = doc(db, "productos", id)
-      const docSnap = await getDoc(queryDoc);
-      return setStock(docSnap.data().stock[3].m),  setTalle("m")
-    }
-  
-    
-    const talleL = async ()  => {
-      const db = getFirestore()
-      const queryDoc = doc(db, "productos", id)
-      const docSnap = await getDoc(queryDoc);
-      return setStock(docSnap.data().stock[4].l),  setTalle("l")
-    }
-  
-    
-    const talleXL = async ()  => {
-      const db = getFirestore()
-      const queryDoc = doc(db, "productos", id)
-      const docSnap = await getDoc(queryDoc);
-      return setStock(docSnap.data().stock[5].xl),  setTalle("xl")
-    }
-
     return (
 
     <div className='ItemDetailListCont'>
 
     {loading
-    ? <LoaderDetail/> : 
+    ? <LoaderDetail/> : <>
+ <div>
+   <p>VOLVER</p>
+ </div>    
 <div className='column'>
     <div className='itemdetailcont' id={id} >
 
@@ -134,7 +147,7 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
             <p className="itemdetailPrecio">${precio}</p>
             
   { botonTipo === 'itemcount' ?
-      <ItemCount categoria={categoria} id={id} nombre={nombre} precio={precio} cantidad={cantidad} onAdd={onAdd} itemcount={itemcountChange} add={Add} remove={Remove} count={count} talle={talle} talleL={talleL} talleXL={talleXL} talleM={talleM} talleS={talleS} talleXS={talleXS} stock={stock} /> :
+      <ItemCount orden={orden} categoria={categoria} id={id} nombre={nombre} precio={precio} cantidad={cantidad} onAdd={onAdd} itemcount={itemcountChange} add={Add} remove={Remove} count={count} talle={talle} talleL={talleL} talleXL={talleXL} talleM={talleM} talleS={talleS} talleXS={talleXS} stock={stock} /> :
 
       <AfterCount itemcount={itemcountChange} />
     }
@@ -143,6 +156,7 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
     </div>
   
     </div>
+    </>
     }
 
 </div>

@@ -24,20 +24,11 @@ function ItemListContainer( ) {
 
   const { id } = useParams()
 
-// useEffect(() => {
-
-//   const db = getFirestore()
-//   const dbQuery = doc(db, "items", "TUuFE74Rssyyxm7EqyZm")
-//   getDoc(dbQuery)
-//   .then(resp => console.log({ id: resp.id, ...resp.data() }))
-// }, [])
 
  useEffect(() => {
 
    const db = getFirestore()
    const QueryCollection = collection(db, "productos")
-
-
      if (id) {
       getDocs(QueryCollection)
         .then(resp =>   setProductos((resp.docs.map(item => ({ id: item.id, ...item.data()}) )).filter((prods)=> prods.categoria === id)))
@@ -49,19 +40,9 @@ function ItemListContainer( ) {
         .catch((err)=>console.log(err))
         .finally(() => setLoading(false))
       }
-
-
  }, [id])
  
-   
-  /// FETCH DE LOS PRODUCTOS///
-  // useEffect(() => {
-
-
-  
-  //  },  [id]);
-
-  ////SIMULACIÓN DE CARGA LAS CARDS - LOADER ///
+   ////SIMULACIÓN DE CARGA LAS CARDS - LOADER ///
   
   const cards = new Promise((resolve, reject) => {
      setTimeout(() => {resolve([]);}, 2000);

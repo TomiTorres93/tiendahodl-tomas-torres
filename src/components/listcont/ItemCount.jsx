@@ -11,9 +11,7 @@ export default function ItemCount({itemcount, onAdd, add, remove, count, id, cat
     const db = getFirestore()
     const queryDoc = doc(db, "productos", id)
     const docSnap = await getDoc(queryDoc);
-    const categoriaProducto = docSnap.data().categoria
-
-  
+    const categoriaProducto = docSnap.data().categoria  
   }
   
   return (
@@ -36,8 +34,8 @@ export default function ItemCount({itemcount, onAdd, add, remove, count, id, cat
       </div>
 
 
-      <div className='addCartButtonCont' onClick={itemcount}>
-        <button className='addCartButton' onClick={onAdd}> <img className='carritoadd' src={carritoadd} alt="" /> </button>
+      <div className='addCartButtonCont'>
+        <button className='addCartButton' onClick={onAdd}> <img className='carritoadd'  onClick={itemcount} src={carritoadd} alt="" /> </button>
         <p className='ultimosDisp'>¡Últimos {stock} disponibles!</p>
       </div>
     </>

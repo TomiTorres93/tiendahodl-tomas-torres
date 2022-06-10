@@ -1,8 +1,6 @@
 import './Panel.css';
 
 import React, { useEffect, useState, useContext } from 'react';
-import { useCartContext } from '../context/CartContext'
-import { Link } from "react-router-dom"
 import { doc, addDoc, setDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
 import Input from './Input';
 import Titulo from '../components/texts/Titulo';

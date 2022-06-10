@@ -2,9 +2,10 @@ import './Cart.css';
 import React, { useEffect, useState, useContext } from 'react';
 import { useCartContext } from '../../context/CartContext'
 import { getDoc, doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
+import { Link } from "react-router-dom"
 
 
-export default function CartItem({precioU, cantidad, precio, img, categoria, nombre, items, id, talle}) {
+export default function CartItem({precioU, cantidad, precio, img, categoria, nombre, items, id, talle, orden}) {
 
     const {cartList, vaciarCart, eliminarItem} = useCartContext()
     const [itemcartcount, setItemcartcount] = useState({cantidad})
@@ -20,36 +21,31 @@ function Add() {
 
  
 const elimItem = () => {
-  eliminarItem(items.id)
+  eliminarItem(items.orden)
 }
 
-
-
-
-
-
   return (
-<div className='micarritoitemscont'> 
-                <img className='fotocart' src={img} alt="" />
+<div className='micarritoitemscont'>
+  <Link to={`/detalle/${id}`}> 
+    <img className='fotocart' src={img} alt="" />
+  </Link>
+    <div className='prodtipocont'>  
+      <p className='carritoprod'> {nombre}</p>
+      <p className='carritotipo'> {categoria.toUpperCase()}</p>
+      <p className='carritotipo'> TALLE {talle.toUpperCase()}</p>
+      <p className='carritotipo'> ${precioU} x u.</p>
+    </div>
        
-                <div className='prodtipocont'>  
-                <p className='carritoprod'> {nombre}</p>
-                <p className='carritotipo'> {categoria.toUpperCase()}</p>
-                <p className='carritotipo'> TALLE {talle.toUpperCase()}</p>
-                <p className='carritotipo'> ${precioU} x u.</p>
-                </div>
-       
-                <div className='cantpreciocont'>
-
-                  <div className='carritocantcont'>
-                    <p className='carritocant'> {cantidad}</p>
-                    <img className='carritocanteliminar' onClick={elimItem}  src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/>
-                  </div>
+    <div className='cantpreciocont'>
+      <div className='carritocantcont'>
+        <p className='carritocant'> {cantidad}</p>
+        <img className='carritocanteliminar' onClick={elimItem}  src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png"/>
+      </div>
                   
-                  <p className='carritoprecio'> ${precio}</p>
+      <p className='carritoprecio'> ${precio}</p>
        
-                </div>
-                </div>
+    </div>
+</div>
   )
 }
 

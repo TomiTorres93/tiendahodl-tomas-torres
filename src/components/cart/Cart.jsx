@@ -36,53 +36,6 @@ const vaciarCarrito = () => {
 
 
 
-const finalizarCompra = async() => {
-
-    let order = {}
-
-
-
-
-    order.cliente = {nombre: "Carlos", email: "carlos@gmail.com", telefono: "213213"}
-    order.total = precioFinal()
-    order.date = Date().substring(0,24)
-
-
-     order.items = cartList.map(carrito => {
-      let id = carrito.id
-      let categoria = carrito.categoria
-      let nombre =  carrito.nombre 
-      let precio = carrito.precio
-      let cantidad = carrito.cantidad
-      let talle = carrito.talle
-    
-    return  {id, categoria, nombre, precio, cantidad, talle}
-  })
-
-
-  const queryCollection = collection(db, "orders")
-  addDoc(queryCollection, order)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-  .finally((() => vaciarCarrito()))
-
-
-    // const queryCollectionStock = collection(db, "productos")
-    // const queryActualizarStock = await query(
-    // queryCollectionStock,
-    //  where(documentId(), 'in', cartList.map(carritoid => carritoid.id))
-    // )
-
-    // const batch = writeBatch(db)
-
-    // await getDocs(queryActualizarStock)
-    // .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
-    //   stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
-    // })))
-    // .finally(()=> console.log("actualizado"))
-
-    // batch.commit()
-   }
 
 
 
@@ -152,9 +105,8 @@ function AddU() {
         <div className='carritoTotalCont'>          
           <p className=''> <span className='carritopreciototaltit'>TOTAL</span> <span className='carritoprecio2'>${precioFinal()}</span> </p>         
         </div>
-
-
-        <p className='vaciarcarrito' onClick={finalizarCompra}>FINALIZAR COMPRA</p>
+        <Link className='vaciarcarrito' to={"/finalizar-compra"} >
+        FINALIZAR COMPRA</Link>
       </div>
     </div>
 </>

@@ -237,6 +237,21 @@ width: 25%;
 }
 
 
+.nroOrden {
+    font-size: 1.5rem;
+    color: white;
+    padding: 1rem 2rem;
+
+    width: fit-content;
+    margin: 5rem auto;
+    border-radius: 10px;
+    background-color: rgb(120,168,141);
+}
+
+.graciasCont {
+    margin-top: 10rem;
+}
+
 
 @keyframes jump {
     0% {filter: blur(0);}
