@@ -2,90 +2,81 @@ import React, { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 import Titulo from '../texts/Titulo'
 import ItemList from './ItemList';
-
 import { Link } from "react-router-dom"
-import { getFetch } from '../../data';
 import { useParams } from 'react-router-dom';
+import { getFirestore, where, collection, getDocs, query } from "firebase/firestore"
 
-import {getFirestore, doc, getDoc, collection, getDocs} from "firebase/firestore"
+// // RANDOM BUTTON
 
-  // RANDOM BUTTON
+// let randomID = Math.floor(Math.random() * 15);
 
-  let randomID = Math.floor(Math.random() * 15);
+// console.log(randomID)
 
-  console.log(randomID)
+function ItemListContainer() {
 
-function ItemListContainer( ) {
-  
 
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [productos, setProductos]=useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [productos, setProductos] = useState([]);
 
   const { id } = useParams()
 
 
- useEffect(() => {
+  // LA FUNCIÓN TOMA LOS PRODUCTOS DE FIREBASE Y LOS GUARDA EN LA VARIABLE PRODUCTOS
+  useEffect(() => {
 
-   const db = getFirestore()
-   const QueryCollection = collection(db, "productos")
-     if (id) {
-      getDocs(QueryCollection)
-        .then(resp =>   setProductos((resp.docs.map(item => ({ id: item.id, ...item.data()}) )).filter((prods)=> prods.categoria === id)))
-        .catch((err)=>console.log(err))
-        .finally(() => setLoading(false))
-      } else {
-        getDocs(QueryCollection)
-        .then(resp => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data()}) )))  
-        .catch((err)=>console.log(err))
-        .finally(() => setLoading(false))
-      }
- }, [id])
- 
-   ////SIMULACIÓN DE CARGA LAS CARDS - LOADER ///
-  
+    const db = getFirestore()
+    const QueryCollection = collection(db, "productos")
+    const QueryCollectionFilter = id ? query(QueryCollection, where("categoria", "==", id)) : QueryCollection
+
+    getDocs(QueryCollectionFilter)
+      .then(resp => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
+      .catch((err) => console.log(err))
+      .finally(() => setCargando(false))
+
+  }, [id])
+
+  ////SIMULACIÓN DE CARGA LAS CARDS - LOADER ///
+
   const cards = new Promise((resolve, reject) => {
-     setTimeout(() => {resolve([]);}, 2000);
-   });
+    setTimeout(() => { resolve([]); }, 2000);
+  });
 
-    cards.then((cargarItems) => {
-     setItems(cargarItems);
-     setLoading(false);
-   });
+  cards.then((cargarItems) => {
+    setItems(cargarItems);
+    setCargando(false);
 
+  });
 
-
- 
-   return (
-  < >
+  return (
+    < >
 
 
-  <Titulo  texto="Elegí el diseño" />
+      <Titulo texto="Elegí el diseño" />
 
-  <div className='filtercont' >
-  <p className='filterelementfilt'>FILTRO</p>
+      <div className='filtercont' >
+        <p className='filterelementfilt'>FILTRO</p>
 
-  <Link className='link filterelement' to={`/categoria/remera`}>
-  REMERAS
-  </Link>
+        <Link className='link filterelement' to={`/categoria/remera`}>
+          REMERAS
+        </Link>
 
-  <Link className='link filterelement' to={`/categoria/gorra`}>
-  GORRAS
-  </Link>
+        <Link className='link filterelement' to={`/categoria/gorra`}>
+          GORRAS
+        </Link>
 
-  <Link className='link filterelement' to={`/`}>
-  VER TODO
-  </Link>
+        <Link className='link filterelement' to={`/`}>
+          VER TODO
+        </Link>
 
-  </div>
+      </div>
+
+      <ItemList items={productos} loading={cargando} />
+
+    </>
+  );
+}
 
 
 
-  <ItemList items={productos} loading={loading}   />
-
-  </>  
-  ); }
-
-
- 
 export default ItemListContainer;

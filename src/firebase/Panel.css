@@ -2,6 +2,10 @@
     color: white;
 }
 
+.panelCont {
+    margin-top: 5rem;
+}
+
 .inputCont {
     display: flex;
     flex-direction: row;
@@ -10,7 +14,7 @@
     padding: 0.2rem 0.5rem;
     border-radius: 0 5px 5px 5px;
     border: rgb(255, 255, 255, 20%) 1px solid;
-    width: 25rem;
+    width:  30rem;
     height: 2rem;
     align-items: center;
 }
@@ -20,6 +24,7 @@
     font-size: 0.5rem;
     letter-spacing: 0.2rem;
     width: 40%;
+    text-align: left;
 }
 
 .input2 {
@@ -55,24 +60,221 @@
     background-color: rgb(192, 104, 104);
 }
 
+.alertInput {
+    font-size: 0.8rem;
+    font-weight: bolder;
+    background-color: rgb(192, 104, 104);
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.2rem 0.4rem;
 
+    border-radius: 5px;
+    position:initial;
+}
+
+.displayNone {
+    display: none;
+}
+
+.display {
+    display: block;
+}
+
+/* PANEL */
+
+.panelButton {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 0.2rem;
+    padding: 0.5rem;
+    border-radius: 0 5px 5px 5px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #2e333d;
+    border: rgb(255, 255, 255, 20%) 1px solid;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+}
+
+.panelButton:hover {
+    background-color: rgb(192, 104, 104);
+}
 
 /* ORDENES */
 
-.ordenCont {
+.ordenesCont {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     color: white;
     font-size: 0.8rem;
     background-color: #2e333d;
     margin: 0.5rem auto;
     padding: 0.5rem 2rem;
     width: fit-content;
-    border-radius: 0 5px 5px 5px;
-    border: rgb(255, 255, 255, 20%) 1px solid;
+    border-radius: 10px;
+    border: rgb(255, 255, 255, 20%) 1px solid;    
+    
 }
 
+
+.ordenCont {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-size: 0.8rem;
+    background-color: rgb(36, 39, 44, 50%);
+    margin: 0.5rem auto;
+    padding: 0rem 2rem;
+    border-radius: 0 5px 5px 5px;
+    width: fit-content;
+    place-items: center;
+    justify-items: space-between;
+}
+
+.ordenDetailCont {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 0.8rem;
+    background-color: rgb(36, 39, 44, 50%);
+    margin: 0.5rem auto;
+    padding: 0rem 2rem;
+    border-radius: 0 5px 5px 5px;
+    width: 80%;
+    place-items: center;
+    justify-items: space-between;
+}
+
+
 .ordenData {
-    margin: 0 1rem;
-    
+    margin: 1rem;
+    width: 8rem;
+    justify-items: space-between;
+}
+
+.ordenDetailData {
+    margin: 1rem;
+    width: 90%;
+    justify-items: space-between;
+}
+
+.destDetail {
+    background-color: #2e333d;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0 5px 5px 5px;
+    border: rgb(255, 255, 255, 20%) 1px solid;   
+    margin-right: 1rem; 
+}
+
+.destDetailboton {
+    color: white;
+    background-color: #2e333d;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0 5px 5px 5px;
+    border: rgb(255, 255, 255, 20%) 1px solid;   
+    margin: 1rem auto;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+}
+
+.destDetailboton:hover {
+    background-color: rgb(192, 104, 104);
+}
+
+.ordenDataDetailButton {
+    color: white;
+    margin: 1rem;
+    width: fit-content;
+    background-color: rgb(192, 104, 104);
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+    border: none;
+    opacity: 80%;
+}
+
+.ordenDataDetailButton:hover {
+
+    opacity: 100%;
+
+}
+
+
+
+.ordenDataTit {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: white;
+}
+
+.estadoCont {
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+
+}
+
+.ordenDataTit2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    background-color: rgb(36, 39, 44, 50%);
+    border-radius: 0 5px 5px 5px;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    margin: 0.5rem auto;
+}
+
+
+.ordenDataTit3 {
+    color: white;
+    font-size: 1rem;
+    font-weight: bolder;
+    background-color: rgb(36, 39, 44, 50%);
+    border-radius: 0 5px 5px 5px;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    margin: 0.5rem auto;
+}
+
+
+
+.detalle{
+    opacity: 35%;
+}
+
+.carritocanteliminar {
+    width: 1rem;
+    margin: 0rem;
+    filter: invert(1);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.carritocanteliminar:hover {
+    filter: invert(0.6);
+
+}
+
+
+.correoscont {
+    display: flex;
+    flex-direction: column;
+}
+
+.correo {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #2e333d;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0 5px 5px 5px;
+    border: rgb(255, 255, 255, 20%) 1px solid;   
+    margin: 1rem auto; 
+}
+
+.validacionCont {
+    margin-top: 5rem;
 }

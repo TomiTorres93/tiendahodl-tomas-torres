@@ -1,115 +1,80 @@
 import './Cart.css';
-import React, { useEffect, useState, useContext } from 'react';
 import Titulo from '../texts/Titulo';
 import CartItem from './CartItem';
 import { useCartContext } from '../../context/CartContext'
 import { Link } from "react-router-dom"
-import { setDoc, getDoc, doc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
 
 
 
 
 
-export default function Cart({  }) {
+export default function Cart({ }) {
+
+  const { cartList, vaciarCart } = useCartContext()
 
 
-  const {cartList, vaciarCart, eliminarItem, ordersCantidad} = useCartContext()
-  const db = getFirestore()
-
-  const [orderId, setOrderId] = useState("")
-
-
-function precioFinal() {
-  if (cartList.length > 0) {
-    
-    return cartList.map(a => (a.precio)).reduce((a, b) => a + b).toLocaleString('de-DE')
-  }}
+  // ESTA FUNCIÓN SUMA EL PRECIO TOTAL DE 
+  // TODOS LOS PRODUCTOS DEL CARRITO
+  function precioFinal() {
+    if (cartList.length > 0) {
+      return cartList.map(a => (a.precio)).reduce((a, b) => a + b).toLocaleString('de-DE')
+    }
+  }
 
 
+  // ESTA FUNCIÓN LLAMA A LA FUNCIÓN
+  // VACIARCART DEL CART CONTEXT
 
-  const [itemcartcount, setItemcartcount] = useState()
-
-const vaciarCarrito = () => {
-  vaciarCart()
-}
-
-
-
-
-
-
-
-function AddU() {
-    console.log(cartList.map(a => a.cantidad) + 1)
-}
+  const vaciarCarrito = () => {
+    vaciarCart()
+  }
 
 
   return (
     <>
-        { cartList.length === 0 ?
-    <Link className='link ' to={"/"}>
-            <div className='vaciarcarrito carritovacio'>
+      {cartList.length === 0 ?
+        <Link className='link ' to={"/"}>
+          <div className='vaciarcarrito carritovacio'>
             CARRITO VACÍO <br /> <br />
-        <img className='backhomeimg' src="https://img.icons8.com/ios/50/000000/home--v1.png"/>
+            <img className='backhomeimg' src="https://img.icons8.com/ios/50/000000/home--v1.png" />
           </div></Link> :
-          
-    <>
-    <Titulo texto="Carrito de compras" />
 
-  
-
-
-    <div className='cartcont'>
-      <div className='micarritocont'> 
-        <p className='micarritotitulo'> Mi Carrito</p>  
-        {cartList.map((items) =>  
+        <>
+          <Titulo texto="Carrito de compras" />
+          <div className='cartcont'>
+            <div className='micarritocont'>
+              <p className='micarritotitulo'> Mi Carrito</p>
+              {cartList.map((items) =>
                 <>
-                 <CartItem items={items} key={items.id} id={items.id} nombre={items.nombre}  tipo={items.tipo} cantidad={items.cantidad} precio={(items.precioU * items.cantidad).toLocaleString('de-DE')} categoria={items.categoria} precioU={items.precioU.toLocaleString('de-DE')} img={items.img}  talle={items.talle} />
+                  <CartItem items={items} key={items.id} id={items.id} nombre={items.nombre} tipo={items.tipo} cantidad={items.cantidad} precio={(items.precioU * items.cantidad).toLocaleString('de-DE')} categoria={items.categoria} precioU={items.precioU.toLocaleString('de-DE')} img={items.img} talle={items.talle} />
 
-                </> )}
+                </>)}
+              <div className='vaciarcarrito' onClick={vaciarCarrito}>
+                VACIAR CARRITO
+              </div>
+            </div>
 
+            <div className='resumendelpedidocont'>
+              <p className='micarritotitulo'> Resumen del pedido</p>
+              {cartList.map((items) =>
 
-
-      <div className='vaciarcarrito' onClick={vaciarCarrito}>
-      VACIAR CARRITO
-    </div>
-    
-
-      </div>    
-
-      <div className='resumendelpedidocont'>
-        <p className='micarritotitulo'> Resumen del pedido</p>
-        {cartList.map((items) =>  
                 <div className='detallecartrow' >
-                 <p className='detallecartrownombre'>{items.nombre} <span className='catDetalle'>{items.categoria.toUpperCase()}</span> <span className='catDetalle'>{items.talle.toUpperCase()}</span> </p> 
-                 <p className='detallecartrowcant'>{items.cantidad} u.</p>
-                 <p className='detallecartrowprecio'>${(items.precioU * items.cantidad).toLocaleString('de-DE')}</p>
+                  <p className='detallecartrownombre'>{items.nombre} <span className='catDetalle'>{items.categoria.toUpperCase()}</span> <span className='catDetalle'>{items.talle.toUpperCase()}</span> </p>
+                  <p className='detallecartrowcant'>{items.cantidad} u.</p>
+                  <p className='detallecartrowprecio'>${(items.precioU * items.cantidad).toLocaleString('de-DE')}</p>
 
                 </div >
-                  )}
-       
-          <p className='micarritotitulo'> Envío</p>
-          <div className='detallecartrow' >
-          <p className='detallecartrownombre'>Normal - Envío Nacional</p>
-          <p className='detallecartrowcant'> 5 a 7 días</p>
-          <p className='detallecartrowprecio'>$750</p>
-          </div>
 
-          <div className='detallecartrow' >
-          <p className='detallecartrownombre'>Express - Envío Nacional</p>
-          <p className='detallecartrowcant'> 2 a 3 días</p>
-          <p className='detallecartrowprecio'>$1150</p>
-          </div>
-        
+              )}
 
-        <div className='carritoTotalCont'>          
-          <p className=''> <span className='carritopreciototaltit'>TOTAL</span> <span className='carritoprecio2'>${precioFinal()}</span> </p>         
-        </div>
-        <Link className='vaciarcarrito' to={"/finalizar-compra"} >
-        FINALIZAR COMPRA</Link>
-      </div>
-    </div>
-</>
-    } </>
-  ) 
+              <div className='carritoTotalCont'>
+                <p className=''> <span className='carritopreciototaltit'>TOTAL</span> <span className='carritoprecio2'>${precioFinal()}</span> </p>
+              </div>
+              <Link className='vaciarcarrito' to={"/finalizar-compra"} >
+                FINALIZAR COMPRA</Link>
+            </div>
+          </div>
+        </>
+      } </>
+  )
 } 

@@ -8,25 +8,24 @@ import { useCartContext } from '../../context/CartContext'
 
 function Carrito() {
 
-  const {totalQty} = useCartContext()
+  const { totalQty } = useCartContext()
 
   const totalCarrito = totalQty()
-  
-  console.log(totalCarrito)
 
-    return (
-<>
-  <Link to='/cart' className='homecart'>
-  <div>
-   <span>  <img src={carritopng} className="logoCarrito" alt="carrito de compras" /></span>
-   <span className='cartcant'>{totalCarrito}</span>
-  </div>
+  return (
+    <>
+      <Link to='/cart' className='homecart'>
+        <div>
+          <span>  <img src={carritopng} className="logoCarrito" alt="carrito de compras" /></span>
+          <span className='cartcant'>{totalCarrito}</span>
+        </div>
 
-  </Link>
-  
-</>
+      </Link>
 
-    ); }
+    </>
+
+  );
+}
 
 
 export default Carrito;

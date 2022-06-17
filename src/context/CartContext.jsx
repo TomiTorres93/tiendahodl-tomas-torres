@@ -1,91 +1,105 @@
-import React, { state, useEffect, useState, createContext, useContext } from 'react';
-import {  doc, getDoc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId, DocumentSnapshot} from 'firebase/firestore';
+import React, { useEffect, useState, createContext, useContext } from 'react';
+import { getFirestore, collection, query, getDocs } from 'firebase/firestore';
 
 
 
-const CartContext = createContext([ ]) 
+const CartContext = createContext([])
 
-export const useCartContext =  () => useContext(CartContext)
+export const useCartContext = () => useContext(CartContext)
 
 
-const CartContextProvider = ({children}) => {
+const CartContextProvider = ({ children }) => {
 
-    const [cartList, setCartList] = useState([]) 
-    
+    const [cartList, setCartList] = useState([])
+    const [ordenes, setOrdenes] = useState([])
+    useEffect(() => {
+        const db = getFirestore()
+        const QueryCollection = collection(db, "orders")
+        getDocs(QueryCollection)
+            .then(resp => setOrdenes(resp.docs.map(order => ({ id: order.id, ...order.data() }))))
+            .catch((err) => console.log(err))
+    }, [])
+
     function totalQty() {
-        if(cartList.length > 0 ) {return cartList.map(a => a.cantidad).reduce((a, b) => a + b)} else {
-            return 0
-        }
-        }
+        if (cartList.length > 0) { return cartList.map(a => a.cantidad).reduce((a, b) => a + b) } else {
+            return 0}}
 
-    function addToCart(item) { 
+    function addToCart(item) {
         let i = cartList.findIndex(a => a.id === item.id && a.talle === item.talle);
 
         if (i !== -1) {
- 
             const cantidadVieja = cartList[i].cantidad;
             const precioTotalViejo = cartList[i].precio;
-
             cartList[i].precio = precioTotalViejo + (item.cantidad * item.precioU)
             cartList[i].cantidad = cantidadVieja + item.cantidad;
 
             setCartList([...cartList])
         } else {
+            setCartList(
+                [...cartList, item])
+        }
+    }
 
+    function addToCartEnvio(item) {
         setCartList(
-            [...cartList, item])  
-           }  
-    } 
-
-     function vaciarCart() {
-         setCartList([])
-     }
-
-    function eliminarItem(orden) { 
- 
-        setCartList(cartList.filter(pro => pro.orden !== orden ) )
-
+            [...cartList, item])
     }
 
 
 
-
-    async function  orders() { 
-    const db = getFirestore()
-
-    const q = query(collection(db, "orders"));
-    const querySnapshot = await getDocs(q);
-    console.log(querySnapshot.docs.length)
-
-    querySnapshot.forEach((doc) => {
-        const data = doc.data()
-      })
+    function vaciarCart() {
+        setCartList([])
     }
 
-    async function  ordersId() { 
+    function eliminarItem(orden) {
+
+        setCartList(cartList.filter(pro => pro.orden !== orden))
+
+    }
+
+
+    function eliminarOrden(id) {
+        console.log(ordenes)
+        setOrdenes(ordenes.filter(ord => ord.id !== id))
+    }
+
+
+    async function orders() {
         const db = getFirestore()
-    
+
         const q = query(collection(db, "orders"));
         const querySnapshot = await getDocs(q);
-        const idOrder =  querySnapshot.doc.data().length
+        console.log(querySnapshot.docs.length)
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data()
+        })
+    }
+
+    async function ordersId() {
+        const db = getFirestore()
+
+        const q = query(collection(db, "orders"));
+        const querySnapshot = await getDocs(q);
+        const idOrder = querySnapshot.doc.data().length
 
         return idOrder
-        }
+    }
 
     //  function contarItemsCarrito(id) {
 
     // }
-    
-    async function  ordersCantidad() { 
+
+    async function ordersCantidad() {
         const db = getFirestore()
         const q = query(collection(db, "orders"));
-      
-        return  await  getDocs(q).then(querySnapshot => console.log(querySnapshot.docs.length))
 
-    }  
+        return await getDocs(q).then(querySnapshot => console.log(querySnapshot.docs.length))
+
+    }
 
     return (
-        <CartContext.Provider value={ {
+        <CartContext.Provider value={{
             cartList,
             addToCart,
             vaciarCart,
@@ -93,12 +107,13 @@ const CartContextProvider = ({children}) => {
             eliminarItem,
             orders,
             ordersCantidad,
-            ordersId
-                            
-        } }>
-            {children} 
+            ordersId,
+            eliminarOrden,
+            addToCartEnvio
 
-            {/* // Children representa a todos los componentes que serán alcanzados por el context en App.jsx */}
+        }}>
+            {children}
+
         </CartContext.Provider>
     )
 

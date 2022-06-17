@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './ItemListContainer.css';
-import Loader from './Loader';
 import ItemCount from '../listcont/ItemCount';
 import AfterCount from '../listcont/AfterCount';
 import { useCartContext } from '../../context/CartContext'
 import { doc, getDoc, addDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId, DocumentSnapshot} from 'firebase/firestore';
-import LoaderDetail from './LoaderDetail';
-
-function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, cantidad, precio}) {
+import { useParams } from 'react-router-dom';
+function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, cantidad, precio, productos}) {
     
     const [stock, setStock] = useState(0)
     const [talle, setTalle] = useState("")
@@ -15,6 +13,33 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
     const [tipo, setTipo] = useState({})
     const [count, setCount] = useState(0)
     const [itemImg, setItemImg] = useState("imgpro")
+    const [supera, setSupera] = useState(false)
+    const [checkId, setCheckId]=useState(true);
+    const [listPro, setListPro]=useState([]);
+    const { detalleID } = useParams()
+
+  
+    useEffect(() => {
+
+      const db = getFirestore()
+      const QueryCollection = collection(db, "productos")
+           getDocs(QueryCollection)
+           .then(resp => setListPro(resp.docs.map(item => ({ id: item.id, ...item.data()}) )))  
+           .catch((err)=>console.log(err))
+           .finally(() => {
+
+            const checkArray = listPro.map( item => item.id)
+            const check = checkArray.includes(detalleID)
+      
+
+            if (check === true) {
+            return  setCheckId(true)
+            }    else {
+              return  setCheckId(false)
+              } 
+          })
+         
+ }, [])
 
 
     
@@ -92,10 +117,13 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
         const resFilt = checkItemsEnCart()
         // ESTE IF COMPRUEBA QUE NO SE PUEDAN AGREGAR AL CARRITO MÁS ITEMS QUE EL STOCK DISPONIBLE 
         if(resFilt === undefined || (resFilt + count) <= stock ) {
-            addToCart({ orden: orden, id: id, talle: talle, img: imgpro, nombre, categoria, tipo, cantidad: count, precioU: precio, precio: (precio * count), stock: stock}) }
+            addToCart({ orden: orden, id: id, talle: talle, img: imgpro, nombre, categoria, tipo, cantidad: count, precioU: precio, precio: (precio * count), stock: stock});
+            setSupera(false)
+       
+          }
 
          else {
-            alert("No puedes agregar tantos items")
+            setSupera(true)
           }
 
         }
@@ -118,46 +146,49 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
         return  setItemImg("imgpro")
         }  
 
-        
 
+           
+  
   
     return (
 
     <div className='ItemDetailListCont'>
-
-    {loading
-    ? <LoaderDetail/> : <>
- <div>
-   <p>VOLVER</p>
- </div>    
-<div className='column'>
-    <div className='itemdetailcont' id={id} >
-
-        <div className='imgContDetail'>
-        <img src={ itemImg === "imgpro" ? imgpro : img }    className="itemdetailimg" alt={nombre} />
-
-        <div className='cambiarImgBotonCont'>
-            <button onClick={cambiarImgPro} className='cambiarImgBoton'>⬤</button>
-            <button onClick={cambiarImg} className='cambiarImgBoton'>⬤</button>
-        </div>
-        </div>
-        <div className='itemdetailDerCont'>
-            <p className="itemdetailTitulo">{nombre}</p>
-            <p className="itemdetailDescripcion">{descripcion}</p>
-            <p className="itemdetailPrecio">${precio}</p>
-            
-  { botonTipo === 'itemcount' ?
-      <ItemCount orden={orden} categoria={categoria} id={id} nombre={nombre} precio={precio} cantidad={cantidad} onAdd={onAdd} itemcount={itemcountChange} add={Add} remove={Remove} count={count} talle={talle} talleL={talleL} talleXL={talleXL} talleM={talleM} talleS={talleS} talleXS={talleXS} stock={stock} /> :
-
-      <AfterCount itemcount={itemcountChange} />
-    }
-        </div>
-        
-    </div>
   
-    </div>
-    </>
-    }
+
+
+  
+<div className='column'>
+  <div className='itemdetailcont' id={id} >
+
+      <div className='imgContDetail'>
+      <img src={ itemImg === "imgpro" ? imgpro : img }    className="itemdetailimg" alt={nombre} />
+
+      <div className='cambiarImgBotonCont'>
+          <button onClick={cambiarImgPro} className='cambiarImgBoton'>⬤</button>
+          <button onClick={cambiarImg} className='cambiarImgBoton'>⬤</button>
+      </div>
+      </div>
+      <div className='itemdetailDerCont'>
+          <p className="itemdetailTitulo">{nombre}</p>
+          <p className="itemdetailDescripcion">{descripcion}</p>
+          <p className="itemdetailPrecio">${precio}</p>
+          
+{ botonTipo === 'itemcount' ?
+    <ItemCount orden={orden} categoria={categoria} id={id} nombre={nombre} precio={precio} cantidad={cantidad} onAdd={onAdd} itemcount={itemcountChange} add={Add} remove={Remove} count={count} talle={talle} talleL={talleL} talleXL={talleXL} talleM={talleM} talleS={talleS} talleXS={talleXS} stock={stock} /> :
+
+    <AfterCount itemcount={itemcountChange} />
+  }
+
+  {supera === true ? <span className='ultimosDispNo margintop1'>Tu selección supera el stock disponible.</span>
+ : <span> </span> }
+      </div>
+      
+  </div>
+
+  </div>
+
+  
+
 
 </div>
 

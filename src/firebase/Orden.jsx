@@ -1,35 +1,24 @@
 import './Panel.css';
-
-import React, { useEffect, useState, useContext } from 'react';
-import { useCartContext } from '../context/CartContext'
 import { Link } from "react-router-dom"
-import { doc, addDoc, setDoc, getFirestore, collection, updateDoc, writeBatch, where, query, getDocs, documentId} from 'firebase/firestore';
-
-import Titulo from '../components/texts/Titulo';
 
 
 
-export default function Orden({id, nombre, fecha, precio, items, email, telefono}) {
-    const db = getFirestore()
-
-
+export default function Orden({id, nombre, precio, email, telefono, estado}) {
+    
 
   return (
-
     <> 
-
-
     <div className='ordenCont'> 
         <p className='ordenData'>#{id}</p>
-        <p className='ordenData'>{fecha.substring(0,21)}</p>
         <p className='ordenData'> {nombre}</p>
         <p className='ordenData'>{email}</p>
-         <p className='ordenData'>{telefono}</p>
-        <p className='ordenData'>{items}</p>
+        <p className='ordenData'>{telefono}</p>
         <p className='ordenData'>${precio}</p>
-        
+        <p className='ordenData'>{estado}</p>
+        <Link className='link' to={`/panel/ordenes/detalle/${id}`}>
+        <p className='ordenDataDetailButton'>DETALLE</p></Link>
     </div>
- 
+    
     </>
   )
 }
