@@ -2,12 +2,16 @@ import './Cart.css';
 import React, { useEffect, useState } from 'react';
 import Titulo from '../texts/Titulo';
 import { useCartContext } from '../../context/CartContext'
+import { useOrdersContext } from '../../context/OrdersContext'
+
 import { addDoc, getFirestore, collection, writeBatch, where, query, getDocs, documentId } from 'firebase/firestore';
 import Input from '../../firebase/Input';
 
 
 export default function Pagar({ }) {
   const { cartList, vaciarCart } = useCartContext()
+  const { ordenes } = useOrdersContext()
+
   const db = getFirestore()
 
   const [nombre, setNombre] = useState("")
@@ -17,16 +21,7 @@ export default function Pagar({ }) {
   const [alertCheck, setAlertCheck] = useState("displayNone")
   const [mostrarBoton, setMostrarBoton] = useState(false)
   const [gracias, setGracias] = useState("nopago")
-  const [ordenes, setOrdenes] = useState([])
 
-  useEffect(() => {
-    const db = getFirestore()
-    const QueryCollection = collection(db, "orders")
-    getDocs(QueryCollection)
-      .then(resp => setOrdenes(resp.docs))
-      .catch((err) => console.log(err))
-
-  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,11 +49,13 @@ export default function Pagar({ }) {
 
     // AL FINALIZAR LA COMPRA SE GENERA UN OBJETO CON LOS DATOS DE LA COMPRA
 
-    const cantidadOrdenes = ordenes.length
+  
+
+    console.log(nroOrden)
 
     let order = {}
 
-    order.id = cantidadOrdenes + 1
+    order.id = nroOrden
     order.cliente = { nombre, email, telefono }
     order.total = precioFinal()
     order.date = Date().substring(0, 24)
@@ -73,6 +70,14 @@ export default function Pagar({ }) {
       let talle = carrito.talle
       return { id, categoria, nombre, precio, cantidad, talle }
     })
+
+    
+    const queryCollection = collection(db, "orders")
+  addDoc(queryCollection, order)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+
+
 
     // ESTA FUNCIÓN ACTUALIZA EL STOCK DE LOS PRODUCTOS EN LA 
     // BASE DE DATOS TENIENDO EN CUENTA EL TALLE DEL PRODUCTO, 
