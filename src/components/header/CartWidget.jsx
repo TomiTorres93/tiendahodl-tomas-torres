@@ -17,7 +17,8 @@ function Carrito() {
       <Link to='/cart' className='homecart'>
         <div>
           <span>  <img src={carritopng} className="logoCarrito" alt="carrito de compras" /></span>
-          <span className='cartcant'>{totalCarrito}</span>
+          { totalCarrito === 0 ? <span></span>  : <span className='cartcant'>{totalCarrito}</span>}
+          
         </div>
 
       </Link>

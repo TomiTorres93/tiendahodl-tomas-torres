@@ -21,11 +21,11 @@ function Contacto({ }) {
       //LOS MENSAJES SE VISUALIZAN EN EL PANEL DE ADMINISTRACIÓN
       const enviarmensaje = () => {
 
-        setDoc(doc(db, "correos", nombre), {
+        setDoc(doc(db, "correos", nombre + mensaje.length + Math.random()), {
          nombre:nombre, 
          mensaje: mensaje,
          fecha: Date().substring(0, 24),
-      })
+      }) 
  
         .then(res => console.log(res))
         .catch(err => console.log(err))

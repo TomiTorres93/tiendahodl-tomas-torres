@@ -165,6 +165,9 @@
     color: white;
 }
 
+
+
+
 .toprightradius {
     border-radius: 0px 5px 0px 0px;
 }
@@ -196,6 +199,10 @@ color: white;
 background-color: rgb(192, 104, 104);
 font-weight: bold;
 bottom: 1rem;
+}
+
+.opacidad {
+    display: none;
 }
 
 .ultimosDisp {
@@ -506,6 +513,10 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
 .regresarButton:hover {
     background-color: rgb(192, 104, 104);
     transform: translateY(5px);
+}
+
+.addCartButtoncero {
+    transform: rotate(45deg);
 }
 
 /* EFECTOS */

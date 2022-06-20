@@ -57,15 +57,15 @@ function ItemListContainer() {
       <div className='filtercont' >
         <p className='filterelementfilt'>FILTRO</p>
 
-        <Link className='link filterelement' to={`/categoria/remera`}>
+        <Link className='filterelement' to={`/categoria/remera`}>
           REMERAS
         </Link>
 
-        <Link className='link filterelement' to={`/categoria/gorra`}>
+        <Link className='filterelement' to={`/categoria/gorra`}>
           GORRAS
         </Link>
 
-        <Link className='link filterelement' to={`/`}>
+        <Link className='filterelement' to={`/`}>
           VER TODO
         </Link>
 

@@ -7,7 +7,9 @@ import Carrito from './CartWidget';
 function Navbar() {
   return (
     <nav>
+      <Link className='link' to={`/`}>
       <img src={logohodl} className="logoIcon" alt="Logo de la marca" />
+      </Link>
       <ul className="menu-cont">
 
         <Link className='link' to={`/`}>

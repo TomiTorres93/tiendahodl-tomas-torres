@@ -11,7 +11,7 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
     const [talle, setTalle] = useState("")
     const [botonTipo, setBotonTipo] = useState('itemcount')
     const [tipo, setTipo] = useState({})
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(1)
     const [itemImg, setItemImg] = useState("imgpro")
     const [supera, setSupera] = useState(false)
     const [checkId, setCheckId]=useState(true);
@@ -31,7 +31,6 @@ function ItemDetail({id, img, imgpro, nombre, categoria, descripcion, loading, c
             const checkArray = listPro.map( item => item.id)
             const check = checkArray.includes(detalleID)
       
-
             if (check === true) {
             return  setCheckId(true)
             }    else {
