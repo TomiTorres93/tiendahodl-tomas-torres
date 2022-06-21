@@ -16,6 +16,7 @@ export default function CartItem({ precioU, cantidad, precio, img, categoria, no
 
   return (
     <div className='micarritoitemscont'>
+
       <Link to={`/detalle/${id}`}>
         <img className='fotocart' src={img} alt="" />
       </Link>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import './Querys.css';
@@ -15,7 +15,6 @@ import Ordenes from './firebase/Ordenes';
 import NuevoProducto from './firebase/NuevoProducto';
 import Miorden from './firebase/Miorden';
 import Correos from './firebase/Correos';
-
 import OrdenDetailCont from './firebase/OrdenDetailCont';
 import OrdersContextProvider from './context/OrdersContext';
 

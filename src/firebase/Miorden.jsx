@@ -53,7 +53,6 @@ export default function Miorden() {
           onClick={() => { buscarOrden() }}
         > BUSCAR </button>
 
-
       </form>
 
       {existe === true ? <>  {busqueda !== "" ? <>

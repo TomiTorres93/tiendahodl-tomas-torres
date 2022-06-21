@@ -201,7 +201,6 @@
 }
 
 
-
 .ordenDataTit {
     font-size: 2rem;
     font-weight: bolder;
@@ -277,4 +276,81 @@
 
 .validacionCont {
     margin-top: 5rem;
+}
+
+
+/* MEDIA QUERY */
+
+@media only screen and (min-width: 601px) {
+
+    .none-desktop {
+        display: none !important;
+    }
+ }
+
+ @media only screen and (min-width: 600px) and  (max-width: 1200px) {
+
+
+ }
+
+
+ @media only screen and (min-width: 100px) and  (max-width: 600px) {
+
+    .none-mobile {
+        display: none !important;
+    }
+
+    
+    .inputCont {
+        display: flex;
+        flex-direction: row;
+        margin: 1rem auto;
+        padding: 0.2rem 0.5rem;
+        width:  80%;
+
+    }
+
+    .alertInput {
+    font-size: 0.5rem;
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.25rem;
+    border-radius: 5px;
+    position:initial;
+}
+
+.ordenesCont {
+    font-size: 0.8rem;
+    margin: 0.5rem auto;
+    padding: 0.2rem 0.5rem;
+    width: 80%;
+}
+
+.ordenCont {
+    flex-direction: column;
+    padding: 0.5rem 1.5rem;
+}
+
+.ordenData {
+    margin: 0.2rem auto;
+}
+
+.estadoCont {
+    flex-direction: column;
+    padding: 0.5rem 1.5rem; 
+}
+
+.panelCont {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.panelButton {
+    margin-top: 1rem;
+}
+
+.ordenesmobile {
+    display: none;
+}
+
 }

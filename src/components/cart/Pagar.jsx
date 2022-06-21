@@ -49,10 +49,6 @@ export default function Pagar({ }) {
 
     // AL FINALIZAR LA COMPRA SE GENERA UN OBJETO CON LOS DATOS DE LA COMPRA
 
-  
-
-    console.log(nroOrden)
-
     let order = {}
 
     order.id = nroOrden

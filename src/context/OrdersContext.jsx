@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createContext, useContext } from 'react';
-import { getFirestore, collection, query, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 
 
@@ -13,7 +13,7 @@ const OrdersContextProvider = ({ children }) => {
     const [ordenes, setOrdenes] = useState([])
     const [items, setItems] = useState([])
   
-    //TOMA LA INFORMACIÓN DE FIRESTORE Y    GUARDA LAS ORDENES EN UN ESTADO
+    //TOMA LA INFORMACIÓN DE FIRESTORE Y GUARDA LAS ORDENES y LOS ITEMS DE CADA ORDEN EN UN ESTADO
       useEffect(() => {
       const QueryCollection = collection(db, "orders")
       getDocs(QueryCollection)

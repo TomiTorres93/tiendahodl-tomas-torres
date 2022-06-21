@@ -13,18 +13,11 @@ export default function OrdenDetail({ fecha, id, nombre, email, telefono, total,
         <p className='ordenDetailData'><span className='destDetail'>EMAIL:</span>{email}</p>
         <p className='ordenDetailData'><span className='destDetail'>TELÉFONO:</span> {telefono}</p>
         <p className='ordenDetailData'> <span className='destDetail'>PRODUCTOS:</span>{productos}</p>
-
-
-        {/* {productos.map((producto) => 
-                <p className='ordenDetailData'></p>
-
-        )} */}
-
         <p className='ordenDetailData'><span className='destDetail'>FECHA:</span>{fecha}</p>
         <p className='ordenDetailData'><span className='destDetail'>TOTAL:</span> ${total}</p>
         <p className='ordenDetailData'><span className='destDetail'>ESTADO:</span>{estado}</p>
         <Link className='link' to={`/panel/ordenes`}>
-        <button className='ordenDataDetailButton'>VOLVER A ORDENES</button>
+          <button className='ordenDataDetailButton'>VOLVER A ORDENES</button>
         </Link>
       </div>
 

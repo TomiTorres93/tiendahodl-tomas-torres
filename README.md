@@ -1,20 +1,20 @@
 ## HODL TIENDA 💻
 
-### Proyecto React JS CoderHouse / Camada 31165 / Tomás Torres 📝
+### Proyecto React JS CoderHouse / Camada 31165 / Tomás Torres
 
 
 HODL es un ecommerce de indumentaria orientada al mundo crypto. La tienda, una SPA (Single Page App) creada con ReactJS, incorpora además un admin desde donde se podrán consultar las órdenes de compra, agregar nuevos productos y leer los mensajes enviados desde el sitio web.
 
 
-<img src="https://firebasestorage.googleapis.com/v0/b/hodltienda-reactcoderhouse.appspot.com/o/gif%2Fhodltienda.gif?alt=media&token=be135b7c-36a3-4284-8e63-eab851c0aebe" width="550"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/hodltienda-reactcoderhouse.appspot.com/o/gif%2Fhodltienda.gif?alt=media&token=690f17fb-7d80-44a4-a75e-1439c9d94e3d" width="550"/>
 
-## PÁGINAS
+## PÁGINAS  📝
 
 ### ▪ Home: 
 
 En la página de inicio del sitio se alojan los productos de la tienda, además de los accesos al resto de las secciones. Las remeras y gorras están presentadas con un diseño minimalista y de formas redondeadas; al pasar el mouse por encima de cada imagen se puede ver en detalle la imagen del diseño. Esta sección cuenta además con un filtro para seleccionar qué tipo de productos queremos visualizar.
 
-### CIRCUITO DE COMPRA
+### CIRCUITO DE COMPRA 🛒
 
 ### ▪ Detalle del producto:
 

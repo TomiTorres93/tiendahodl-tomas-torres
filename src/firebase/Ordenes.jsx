@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 export default function Ordenes() {
 
-  const {ordenes} = useOrdersContext()
+  const { ordenes } = useOrdersContext()
 
   return (
 
@@ -17,7 +17,7 @@ export default function Ordenes() {
       <OrdenList ordenes={ordenes} />
       <Link className='link' to={`/panel`}>
         <button className='ordenDataDetailButton'>VOLVER AL PANEL</button>
-        </Link>
+      </Link>
     </>
   )
 }

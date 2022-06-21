@@ -12,7 +12,6 @@ export default function OrdenDetailCont() {
 
   const { ordenes, items } = useOrdersContext()
   const { detalleID } = useParams()
-
   const [existe, setExiste] = useState("existe");
   const [nombre, setNombre] = useState()
   const [id, setId] = useState()

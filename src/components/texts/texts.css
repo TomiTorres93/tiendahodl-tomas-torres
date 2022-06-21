@@ -17,3 +17,32 @@ transform: translateY(5px);}
 
     100% {filter: blur(0);}
 }
+
+
+/* MEDIA QUERY */
+
+@media only screen and (min-width: 601px) {
+
+    .none-desktop {
+        display: none !important;
+    }
+ }
+
+ @media only screen and (min-width: 600px) and  (max-width: 1200px) {
+
+
+ }
+
+
+ @media only screen and (min-width: 100px) and  (max-width: 600px) {
+
+    .none-mobile {
+        display: none !important;
+    }
+
+    .titulo {
+        font-size: 1.5rem;
+    }
+    
+   
+}

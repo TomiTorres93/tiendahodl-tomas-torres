@@ -1,7 +1,4 @@
-import React, { useEffect, useState, createContext, useContext } from 'react';
-import { getFirestore, collection, query, getDocs } from 'firebase/firestore';
-
-
+import React, { useState, createContext, useContext } from 'react';
 
 const CartContext = createContext([])
 
@@ -10,20 +7,20 @@ export const useCartContext = () => useContext(CartContext)
 
 const CartContextProvider = ({ children }) => {
 
-    const [cartList, setCartList] = useState([])
-    const [ordenes, setOrdenes] = useState([])
-    useEffect(() => {
-        const db = getFirestore()
-        const QueryCollection = collection(db, "orders")
-        getDocs(QueryCollection)
-            .then(resp => setOrdenes(resp.docs.map(order => ({ id: order.id, ...order.data() }))))
-            .catch((err) => console.log(err))
-    }, [])
 
+    const [cartList, setCartList] = useState([])
+
+
+    // ESTA FUNCIÓN CALCULA EL PRECIO TOTAL DE LA ORDEN
     function totalQty() {
         if (cartList.length > 0) { return cartList.map(a => a.cantidad).reduce((a, b) => a + b) } else {
-            return 0}}
+            return 0
+        }
+    }
 
+
+    // ESTA FUNCIÓN AGREGA EL ITEM AL CARRITO Y VERIFICA SI YA EXISTE UN ITEM CON EL MISMO ID. 
+    // EN CASO DE QUE EXISTA, NO SE DUPLICA EL ITEM EN EL CARRITO, SINO QUE SE SUMA LA CANTIDAD DEL ITEM Y SE ACTUALIZA EL CARRITO
     function addToCart(item) {
         let i = cartList.findIndex(a => a.id === item.id && a.talle === item.talle);
 
@@ -40,63 +37,16 @@ const CartContextProvider = ({ children }) => {
         }
     }
 
-    function addToCartEnvio(item) {
-        setCartList(
-            [...cartList, item])
-    }
-
-
-
+    // ESTA FUNCIÓN VACÍA DE ITEMS EL CARRITO
     function vaciarCart() {
         setCartList([])
     }
 
+    // ESTA FUNCIÓN ELIMINA UN ITEM DEL CARRITO
     function eliminarItem(orden) {
-
         setCartList(cartList.filter(pro => pro.orden !== orden))
-
     }
 
-
-    function eliminarOrden(id) {
-        console.log(ordenes)
-        setOrdenes(ordenes.filter(ord => ord.id !== id))
-    }
-
-
-    async function orders() {
-        const db = getFirestore()
-
-        const q = query(collection(db, "orders"));
-        const querySnapshot = await getDocs(q);
-        console.log(querySnapshot.docs.length)
-
-        querySnapshot.forEach((doc) => {
-            const data = doc.data()
-        })
-    }
-
-    async function ordersId() {
-        const db = getFirestore()
-
-        const q = query(collection(db, "orders"));
-        const querySnapshot = await getDocs(q);
-        const idOrder = querySnapshot.doc.data().length
-
-        return idOrder
-    }
-
-    //  function contarItemsCarrito(id) {
-
-    // }
-
-    async function ordersCantidad() {
-        const db = getFirestore()
-        const q = query(collection(db, "orders"));
-
-        return await getDocs(q).then(querySnapshot => console.log(querySnapshot.docs.length))
-
-    }
 
     return (
         <CartContext.Provider value={{
@@ -104,13 +54,7 @@ const CartContextProvider = ({ children }) => {
             addToCart,
             vaciarCart,
             totalQty,
-            eliminarItem,
-            orders,
-            ordersCantidad,
-            ordersId,
-            eliminarOrden,
-            addToCartEnvio
-
+            eliminarItem
         }}>
             {children}
 

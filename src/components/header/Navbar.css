@@ -106,3 +106,101 @@ nav {
 }
 
 
+/* MEDIA QUERY */
+
+@media only screen and (min-width: 601px) {
+
+    .none-desktop {
+        display: none !important;
+    }
+ }
+
+ @media only screen and (min-width: 600px) and  (max-width: 1200px) {
+
+
+ }
+
+
+ @media only screen and (min-width: 100px) and  (max-width: 600px) {
+
+    .none-mobile {
+        display: none !important;
+    }
+
+
+    
+.menu-cont {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -1rem;
+    padding-top: 10rem;
+    background-color: black;
+    width: 100%;
+    height: 110%;
+    z-index: 90;
+    justify-content:flex-start;
+    align-items: flex-start;
+}
+
+.menu-itemmob {
+    margin: 0.5rem 0rem;
+}
+
+.menu-item {
+    padding: 0.5rem 2rem;
+
+    font-size: 0.8rem;
+    width: fit-content;
+}
+
+.menumobile {
+    display: none;
+}
+
+.logoIcon {
+    left: 0.5rem;
+    height: 2.5rem;
+
+}
+
+.logoIcon:hover {
+    height: 2.5rem;
+}
+
+
+.homecart {
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+
+.menumobilebutton {
+    font-size: 3rem;
+    color: white;
+    font-weight: lighter;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+    z-index: 100;
+    position: absolute;
+    transform: rotate(180deg);
+    top: 0rem;
+} 
+
+.menumobilebuttonClick {
+    font-size: 2rem;
+    color: rgb(192, 104, 104);
+    font-weight: lighter;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+    z-index: 100;
+    position: absolute;
+    top: 0rem;
+} 
+
+
+}

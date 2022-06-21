@@ -6,12 +6,6 @@ import { Link } from "react-router-dom"
 import { useParams } from 'react-router-dom';
 import { getFirestore, where, collection, getDocs, query } from "firebase/firestore"
 
-// // RANDOM BUTTON
-
-// let randomID = Math.floor(Math.random() * 15);
-
-// console.log(randomID)
-
 function ItemListContainer() {
 
 

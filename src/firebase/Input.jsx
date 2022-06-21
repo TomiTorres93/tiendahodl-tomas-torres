@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React from 'react';
 import './Panel.css';
 
 export default function Input({ tipo, name, place, value, onchange, titulo, alert }) {

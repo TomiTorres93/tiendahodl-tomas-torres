@@ -3,12 +3,12 @@ import Orden from './Orden';
 
 
 
-export default function OrdenList({ ordenes}) {
+export default function OrdenList({ ordenes }) {
 
   return (
 
     <>
-      <div className='ordenCont'>
+      <div className='ordenCont ordenesmobile'>
         <p className='ordenData'>ID</p>
         <p className='ordenData'> NOMBRE</p>
         <p className='ordenData'>EMAIL</p>
