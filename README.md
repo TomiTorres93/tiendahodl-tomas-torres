@@ -5,6 +5,8 @@
 
 HODL es un ecommerce de indumentaria orientada al mundo crypto. La tienda, una SPA (Single Page App) creada con ReactJS, incorpora además un admin desde donde se podrán consultar las órdenes de compra, agregar nuevos productos y leer los mensajes enviados desde el sitio web.
 
+El sitio es full-responsive.
+
 
 <img src="https://firebasestorage.googleapis.com/v0/b/hodltienda-reactcoderhouse.appspot.com/o/gif%2Fhodltienda.gif?alt=media&token=690f17fb-7d80-44a4-a75e-1439c9d94e3d" width="550"/>
 
