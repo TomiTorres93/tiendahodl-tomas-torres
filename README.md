@@ -32,16 +32,19 @@ Luego de elegir los productos, el circuito continúa en el carrito de compras. E
 Por otra parte, a la derecha del carrito se encuentra el resumen del pedido, con el precio total de la orden y el botón de finalizar compra. Al clickear este botón se redirigirá al formulario de compra.
 
 
-### ▪ Formulario finalizar compra:
+### ▪ Formulario finalizar compra - MercadoPago:
 
 Esta página es el último tramo del circuito de compra. En ella se deben completar los datos personales y además se visualiza nuevamente el detalle del carrito. El formulario cuenta con una validación del email: el botón de pagar sólo se visualizará (debajo del detalle del carrito) si los mails coinciden y contienen "@".
 
-Una vez completados los datos, se finaliza con la compra haciendo click en el botón. En este paso suceden varias cosas: en pantalla se ofrece el número de orden de compra y en la base de datos se guarda la orden con los datos correspondientes y se corrige el stock de los productos comprados.
+Una vez completados los datos, se finaliza con la compra haciendo click en el botón "pagar". Este botón nos redireccionará al link de pago de Mercadopago. Al mismo tiempo, se guarda la orden con los datos correspondientes en Firebase y en sessionStorage, y se corrige el stock de los productos comprados.
+
+
+Luego de confirmada la transacción, se redirecciona a la tienda, donde aparecerá en pantalla el código de orden único de la operación. Esto es posible gracias a los datos almacenados en el sessionStorage. 
 
 
 ### ▪ Seguimiento: 
 
-El sitio también cuenta con un buscador de órdenes. En esta sección, al ingresar el número de orden provisto en el paso anterior se visualizará en pantalla el detalle de la orden y su estado (en esta etapa, sólo modificable desde la base de datos).
+El sitio también cuenta con un buscador de órdenes. En esta sección, al ingresar el código de orden provisto en el paso anterior se visualizará en pantalla el detalle de la orden y su estado (en esta etapa, sólo modificable desde la base de datos).
 
 ### ▪ Contacto:
 

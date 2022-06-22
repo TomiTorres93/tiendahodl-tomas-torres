@@ -48,7 +48,7 @@ export default function Miorden() {
       <Titulo texto="Buscá tu orden" />
       <form className='formAgregarProducto' action="" onSubmit={handleSubmit}>
 
-        <Input alert="displayNone" titulo="NRO DE ORDEN" tipo="text" name="nroOrden" onchange={(e) => setNroOrden(e.target.value)} />
+        <Input alert="displayNone" titulo="CÓDIGO DE ORDEN" tipo="text" name="nroOrden" onchange={(e) => setNroOrden(e.target.value)} />
         <button className='agregarProducto' type='submit'
           onClick={() => { buscarOrden() }}
         > BUSCAR </button>
@@ -58,7 +58,7 @@ export default function Miorden() {
       {existe === true ? <>  {busqueda !== "" ? <>
 
         <div className='ordenesCont' >
-          <p className='ordenDataTit'> ORDEN #{busqueda} </p>
+          <p className='ordenDataTit'> ORDEN {busqueda} </p>
           {productosorden.items.map(item =>
 
 

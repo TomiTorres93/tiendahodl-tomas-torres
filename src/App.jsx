@@ -17,6 +17,7 @@ import Miorden from './firebase/Miorden';
 import Correos from './firebase/Correos';
 import OrdenDetailCont from './firebase/OrdenDetailCont';
 import OrdersContextProvider from './context/OrdersContext';
+import Pagoprocesado from './components/cart/Pagoprocesado';
 
 
 
@@ -44,6 +45,9 @@ function App() {
               <Route path='/panel/ordenes/detalle/:detalleID' element={<OrdenDetailCont />} />
               <Route path='/mi-orden' element={<Miorden />} />
               <Route path='/panel/correos' element={<Correos />} />
+              <Route path='/checkout' element={<Pagoprocesado />} />
+
+
             </Routes>
           </div>
         </CartContextProvider>

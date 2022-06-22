@@ -15,6 +15,17 @@ function ItemListContainer() {
 
   const { id } = useParams()
 
+  const [orden, setOrden] = useState([])
+
+
+  useEffect(() => {
+      setOrden(JSON.parse(sessionStorage.getItem('ordenCliente')))
+    }, [])
+
+  const sessionStoragecheck = sessionStorage.getItem("ordenCliente")
+
+
+
 
   // LA FUNCIÓN TOMA LOS PRODUCTOS DE FIREBASE Y LOS GUARDA EN LA VARIABLE PRODUCTOS
   useEffect(() => {
@@ -45,6 +56,14 @@ function ItemListContainer() {
   return (
     < >
 
+{sessionStoragecheck === null ? <span></span>
+ : <div className='graciasCont'>
+
+<Titulo texto="¡Gracias por tu compra!" />
+
+<p className='nroOrden'>Tu código de orden es: <b> {orden.id}</b></p>
+
+</div>}
 
       <Titulo texto="Elegí el diseño" />
 

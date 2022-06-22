@@ -38,7 +38,6 @@ function Contacto({ }) {
             <form class="sectionwa-subtit-cont"  onSubmit={handleSubmit}>
 
                 <div className='formlogocont'>
-                    <img src={logohodlcont} className="logoIcon2" alt="Logo de la marca" />
                 </div>
 
                 <div className="inputsCont">

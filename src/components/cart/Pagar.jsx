@@ -11,9 +11,7 @@ import Input from '../../firebase/Input';
 export default function Pagar({ }) {
   const { cartList, vaciarCart } = useCartContext()
   const { ordenes } = useOrdersContext()
-
   const db = getFirestore()
-
   const [nombre, setNombre] = useState("")
   const [telefono, setTelefono] = useState("")
   const [email, setEmail] = useState("")
@@ -36,13 +34,55 @@ export default function Pagar({ }) {
   function precioFinal() {
     if (cartList.length > 0) {
 
-      return cartList.map(a => (a.precio)).reduce((a, b) => a + b).toLocaleString('de-DE')
+      return cartList.map(a => (a.precio)).reduce((a, b) => a + b)
     }
   }
 
 
-  const nroOrden = ordenes.length + 1
-  // const cartListStock =  cartList.map((carritoid) => carritoid.id + carritoid.talle)
+
+// MERCADOPAGO
+
+const [ordenmp, setOrdenmp] = useState([]);
+
+const data = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization:
+
+      "Bearer TEST-5672995470466620-060619-d42c23c5a3305e0b70f1f217b315ea94-169291933"
+  },
+  body: JSON.stringify({
+    items: [
+      {
+        title: "Tienda Hodl",
+        description: "¡Gracias por su compra!",
+        picture_url:
+          "https://firebasestorage.googleapis.com/v0/b/hodltienda-reactcoderhouse.appspot.com/o/gif%2Ffavicon.ico?alt=media&token=1516813f-c9d4-4275-9e07-646f93a29b1a",
+        category_id: "cat123",
+        quantity: 1,
+        currency_id: "ARS",
+        unit_price: precioFinal()
+      }
+    ],
+    auto_return: "approved",
+    back_urls: { success: "https://tiendahodl.netlify.app/" }
+  })
+};
+
+
+
+useEffect(() => {
+  //getFetch();
+  fetch("https://api.mercadopago.com/checkout/preferences", data)
+    .then(function (resp) {
+      return resp.json();
+    })
+    .then((resp) => setOrdenmp(resp));
+
+}, []);
+
+
 
   const finalizarCompra = async () => {
 
@@ -51,7 +91,7 @@ export default function Pagar({ }) {
 
     let order = {}
 
-    order.id = nroOrden
+    order.id = nombre + parseInt((Math.random()*100000));
     order.cliente = { nombre, email, telefono }
     order.total = precioFinal()
     order.date = Date().substring(0, 24)
@@ -67,7 +107,10 @@ export default function Pagar({ }) {
       return { id, categoria, nombre, precio, cantidad, talle }
     })
 
-    
+
+    sessionStorage.setItem('ordenCliente', JSON.stringify(order));
+ 
+
     const queryCollection = collection(db, "orders")
   addDoc(queryCollection, order)
   .then(res => console.log(res))
@@ -113,6 +156,7 @@ export default function Pagar({ }) {
 
       .finally(() =>  vaciarCart())
 
+
     batch.commit()
   }
 
@@ -146,12 +190,11 @@ export default function Pagar({ }) {
   }, [email, emailconf])
 
 
-
   return (
+    
     <>
 
-      {gracias === "nopago" ? <>
-        <Titulo texto="Ingresá tus datos y aboná" />
+           <Titulo texto="Ingresá tus datos y aboná" />
 
         <form className='formAgregarProducto' action="" onSubmit={handleSubmit}>
 
@@ -162,6 +205,8 @@ export default function Pagar({ }) {
 
           <Titulo texto="Detalle del carrito" />
 
+
+  
           {cartList.map((items) =>
             <div className='inputCont' >
               <p className='detallecartrownombre'>{items.nombre} <span className='catDetalle'>{items.categoria.toUpperCase()}</span> <span className='catDetalle'>{items.talle.toUpperCase()}</span> </p>
@@ -174,20 +219,14 @@ export default function Pagar({ }) {
             <p className=''> <span className='carritopreciototaltit'>TOTAL</span> <span className='carritoprecio2'>${precioFinal()}</span> </p>
           </div>
           <button className={mostrarBoton === false ? "displaynone" : 'pagarOrden'} type='submit'
-            onClick={() => { finalizarCompra(); graciasPorSuCompra() }}> Pagar orden </button>
+            onClick={() => { finalizarCompra(); graciasPorSuCompra() }}> <a className='pagarOrden' href={ordenmp.sandbox_init_point}>Pagar</a></button>
 
-
+      
         </form>
+       
 
-      </> : <div className='graciasCont'>
+      </> 
+     
 
-        <Titulo texto="¡Gracias por tu compra!" />
-
-        <p className='nroOrden'>Tu número de pedido es <b> #{nroOrden}</b></p>
-
-      </div>
-      }
-
-    </>
   )
 }
