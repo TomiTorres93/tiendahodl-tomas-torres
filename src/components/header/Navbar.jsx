@@ -50,7 +50,7 @@ function Navbar() {
           <a className="menu-item borde4" href="">CONTACTO</a>
         </Link>
 
-        <Link className='link menu-itemmob' to={`/admin`} onClick={menuMobile}>
+        <Link className='link menu-itemmob' to={`/panel`} onClick={menuMobile}>
           <a className="menu-item borde4" href="">ADMIN</a>
         </Link>
 
