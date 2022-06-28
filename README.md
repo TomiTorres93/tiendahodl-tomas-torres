@@ -60,7 +60,9 @@ El sitio contiene un panel de control que, a modo de muestra, tiene acceso desde
 
 Luego de la validación, en la sección se despliegan tres opciones: agregar productos, órdenes y correos.
 
-En "agregar productos" se podran ingresar nuevos productos a la colección "productos" de la base de datos en firebase.
+En "agregar productos" se podrán ingresar nuevos productos a la colección "productos" de la base de datos en firebase.
+
+En "productos" se puede acceder a un listado de todos los productos con la información principal (id, precio y stock) y un botón para ver el detalle del mismo. Desde el detalle del producto se puede editar cada propiedad por separado, además de subir nuevas fotos y reemplazarlas en el item.
 
 En "órdenes" se podrán visualizar, en primera instancia, un resumen de todas las órdenes de compra. Al clickear en "detalle" se puede acceder al detalle de cada una.
 

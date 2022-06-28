@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyDm1zGG7O4gxa4gYRsUgehqkMa7zWH4OZ8",
   authDomain: "hodltienda-reactcoderhouse.firebaseapp.com",
@@ -10,6 +11,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
 
 
 

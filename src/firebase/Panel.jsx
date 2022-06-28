@@ -4,9 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Titulo from '../components/texts/Titulo';
 import { Link } from "react-router-dom"
 import Input from './Input';
-
+import { Pulsar } from '@uiball/loaders'
 
 export default function Panel() {
+
+
+
   const db = getFirestore()
 
   const [validacion, setValidacion] = useState(false)
@@ -15,10 +18,14 @@ export default function Panel() {
   const [contraseña, setContraseña] = useState("")
   const [contraseñaValidada, setContraseñaValidada] = useState("")
   const [admins, setAdmins] = useState([])
+  const [loginToken, setLoginToken] = useState()
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
   }
+
+
 
 
   // TOMA LA LISTA DE ADMINS Y LAS GUARDA EN EL STATE ADMINS
@@ -30,8 +37,6 @@ export default function Panel() {
       .catch((err) => console.log(err))
   }, [])
 
-  console.log(admins)
-
   // ESTA FUNCIÓN COMPRUEBA QUE EL USUARIO Y CONTRASEÑA EXISTAN Y COINCIDAN EN FIREBASE
   // Y DA ACCESO AL PANEL DE ADMINISTRACIÓN
 
@@ -40,11 +45,27 @@ export default function Panel() {
     const admincheck = admins.some(admin => admin.usuario === usuarioValidado && admin.contraseña === contraseñaValidada)
 
     if (admincheck === true) {
-      return setValidacion(true)
+      return   sessionStorage.setItem('LogToken', true), setValidacion(true)     
     } else {
       return console.log("Usuario o contraseña incorrectos")
-    }
+    }      
   }
+
+  
+  useEffect(() => {
+    const logCheck = sessionStorage.getItem('LogToken')
+
+    setLoginToken(logCheck)
+
+       if(logCheck === null || undefined ) {
+       return setValidacion(false)
+     } else {
+      return setValidacion(true)
+     }
+     
+   }, [])
+
+
 
   //PANEL DE ADMINISTRACIÓN, DESDE DONDE SE PUEDE AGREGAR PRODUCTOS 
   //VER LAS ÓRDENES DE COMPRA Y LOS CORREOS DE LOS CLIENTES
@@ -53,7 +74,9 @@ export default function Panel() {
 
       <div className='validacionCont'>
         {validacion === false ?
-          <><Titulo texto="Panel de administración" />
+
+        
+         <><Titulo texto="Panel de administración" />
             <form className='formAgregarProducto' action="" onSubmit={handleSubmit}>
 
               <Input alert="displayNone" titulo="usuario" type="text" place="Ingresar usuario" onchange={(e) => setUsuario(e.target.value)} />
@@ -68,9 +91,17 @@ export default function Panel() {
             </form>
           </>
           :
+
           <>
             <Titulo texto="Panel de administración" />
             <div className='panelCont'>
+
+
+              
+              <Link to={`/panel/productos/listado`}>
+                <button className='panelButton'>Productos</button>
+              </Link>
+
               <Link to={`/panel/productos`}>
                 <button className='panelButton'>Agregar productos</button>
               </Link>
@@ -82,6 +113,7 @@ export default function Panel() {
               <Link to={`/panel/correos`}>
                 <button className='panelButton'>Correos</button>
               </Link>
+
             </div>
           </>}
       </div>

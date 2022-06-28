@@ -5,6 +5,7 @@ import ItemList from './ItemList';
 import { Link } from "react-router-dom"
 import { useParams } from 'react-router-dom';
 import { getFirestore, where, collection, getDocs, query } from "firebase/firestore"
+import BannerCont from './BannerCont';
 
 function ItemListContainer() {
 
@@ -64,6 +65,8 @@ function ItemListContainer() {
 <p className='nroOrden'>Tu código de orden es: <b> {orden.id}</b></p>
 
 </div>}
+
+<BannerCont />
 
       <Titulo texto="Elegí el diseño" />
 

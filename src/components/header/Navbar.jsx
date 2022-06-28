@@ -28,7 +28,7 @@ function Navbar() {
       </Link>
 
     <div onClick={menuMobile}>
-      {menuMobileIcono === false ? <button  class="menumobilebutton none-desktop"  type="text"> ≡ </button> : <button  class="menumobilebuttonClick none-desktop"  type="text"> ✖ </button>}
+      {menuMobileIcono === false ? <button  className="menumobilebutton none-desktop"  type="text"> ≡ </button> : <button  class="menumobilebuttonClick none-desktop"  type="text"> ✖ </button>}
 
 
     </div>

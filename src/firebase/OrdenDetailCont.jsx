@@ -43,7 +43,6 @@ export default function OrdenDetailCont() {
 
   }, [])
 
-
   return (
     <>
       {existe === "no existe" ? <LoaderDetail /> : <>

@@ -18,6 +18,9 @@ import Correos from './firebase/Correos';
 import OrdenDetailCont from './firebase/OrdenDetailCont';
 import OrdersContextProvider from './context/OrdersContext';
 import Pagoprocesado from './components/cart/Pagoprocesado';
+import ProductosContextProvider from './context/ProductosContext';
+import ProductosCont from './firebase/ProductosCont';
+import ProductoDetailCont from './firebase/ProductoDetailCont';
 
 
 
@@ -28,6 +31,7 @@ function App() {
     <BrowserRouter>
       <OrdersContextProvider>
         <CartContextProvider>
+        <ProductosContextProvider>
           <div className="App">
             <Navbar />
             <Routes>
@@ -46,10 +50,11 @@ function App() {
               <Route path='/mi-orden' element={<Miorden />} />
               <Route path='/panel/correos' element={<Correos />} />
               <Route path='/checkout' element={<Pagoprocesado />} />
-
-
+              <Route path='/panel/productos/listado' element={<ProductosCont />} />
+              <Route path='/panel/productos/listado/detalle/:detalleID' element={<ProductoDetailCont />} />
             </Routes>
           </div>
+          </ProductosContextProvider>
         </CartContextProvider>
       </OrdersContextProvider>
     </BrowserRouter>

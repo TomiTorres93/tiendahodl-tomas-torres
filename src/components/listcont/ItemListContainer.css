@@ -10,10 +10,7 @@
     padding: 1rem 1rem;
     animation: jump infinite 2s ease-in-out;
     font-weight: lighter;
-    letter-spacing: 0.5rem;
-
-
-  
+    letter-spacing: 0.5rem;  
 }
 
 
@@ -32,7 +29,6 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: top;
-
 }
 
 .link {
@@ -75,7 +71,6 @@
     opacity: 100%;
     cursor: pointer;
     background-color: rgb(212, 212, 212);
-
 }
 
 .cardimg {
@@ -97,7 +92,6 @@
     font-family: 'Barlow Condensed', sans-serif;
     margin: 0.5rem 0rem;
     padding: 0rem 2rem;
-
 }
 
 .cardDescripcion {
@@ -319,10 +313,8 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
     justify-items: center;
     justify-content: center;
     margin: 1rem auto;
-    
     color: white;
     font-family: 'Barlow Condensed', sans-serif;
-    
     width: fit-content;
 }
 
@@ -338,7 +330,6 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
     filter: blur(0.8px);
     color: white;
     text-decoration: none;
-
 }
 
 .aftercountboton {
@@ -353,7 +344,6 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
     filter: blur(0.8px);
     color: white;
     text-decoration: none;
-
 }
 
 .aftercountboton:hover {
@@ -547,6 +537,58 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
 
 .addCartButtoncero {
     transform: rotate(45deg);
+}
+
+
+
+.bannerCarouselCont {
+    width: 90%;
+    height: 30rem;
+    display: flex;
+    align-content: center;
+    scroll-snap-type: x mandatory;
+    scroll-snap-align: start;
+    margin: 1rem auto;
+    transition: all ease-in-out 0.5s;
+}
+
+.bannerImgCont {
+    width: 100%;
+    scroll-snap-align: start;
+    margin: 1rem auto;
+}
+
+.bannerImg {
+    width: 100%;
+    height: 30rem;
+    border-radius: 15px;
+    object-fit:cover;
+
+}
+
+.bannerBoton {
+    font-size: 2rem;
+    margin: 0 0.2rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    transition: ease-in-out 0.5s all;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    bottom: 10rem;
+    transition: all 0.5s ease-in-out;
+    background: none;
+    border: none;
+}
+
+.bannerBoton:hover {
+    background-color: rgb(192, 104, 104);
+    bottom: 9.5rem;
+}
+
+.flecha {
+    color: white;
 }
 
 /* EFECTOS */

@@ -47,7 +47,9 @@ function ItemListContainer({ }) {
   return (< >
     {existe === "no existe" ?
       <LoaderDetail /> :
+      <>
       <ItemDetail productos={productos} id={productos.id} imgpro={productos.imgpro} img={productos.img} nombre={productos.nombre} categoria={productos.categoria} precio={productos.precio} descripcion={productos.descripcion} cantidad={productos.stock} loading={loading} />
+      </>
     }  </>
   );
 }

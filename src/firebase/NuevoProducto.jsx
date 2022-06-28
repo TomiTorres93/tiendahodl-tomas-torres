@@ -31,18 +31,20 @@ export default function NuevoProducto() {
   }
 
 
-  // ESTA FUNCIÓN GUARDA EN LA BASE DE DATOS UN NUEVO PRODUCTO
-  const ingresarProducto = () => {
 
-    setDoc(doc(db, "productos", idPro), {
-      categoria: categoria,
-      nombre: nombre,
-      descripcion: descripcion,
+
+  // // ESTA FUNCIÓN GUARDA EN LA BASE DE DATOS UN NUEVO PRODUCTO
+   const ingresarProducto = () => {
+
+     setDoc(doc(db, "productos", idPro), {
+       categoria: categoria,
+       nombre: nombre,
+       descripcion: descripcion,
       img: imgdis,
       imgpro: imgpro,
-      stock: [stockGorra, { "xs": Number(stockXS) }, { "s": Number(stockS) }, { "m": Number(stockM) }, { "l": Number(stockL) }, { "xl": Number(stockXL) }],
-      precio: Number(precio)
-    })
+       stock: [stockGorra, { "xs": Number(stockXS) }, { "s": Number(stockS) }, { "m": Number(stockM) }, { "l": Number(stockL) }, { "xl": Number(stockXL) }],
+       precio: Number(precio)
+     })
 
   }
 
