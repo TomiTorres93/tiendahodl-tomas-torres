@@ -21,13 +21,18 @@ export default function ItemCount({ itemcount, onAdd, add, remove, count, catego
         {/* ESTE IF  MODIFICA EL BOTÓN DE SUMAR CANTIDAD DEL PRODUCTO DE DOS FORMAS: TRANSFORMA 
           EL "+" EN UNA "X" (CON ROTACIÓN, QUE SE PUEDE VER EN LA REMERA INFINITE II AL CAMBIAR 
           DE UN TALLE CON STOCK A UNO SIN STOCK (TALLE S)) Y NO PERMITE SEGUIR SUMANDO UNIDADES */}
-        {stock === 0 ? <button className='AddRemoveButton toprightradius addCartButtoncero'>+</button> : <button className='AddRemoveButton toprightradius' onClick={add}>+</button>}
+        {stock === 0 ? <button className='AddRemoveButton toprightradius addCartButtoncero'>+</button> : 
+        
+        
+        <button className='AddRemoveButton toprightradius' onClick={add}>+</button>}
 
       </div>
 
       <div className='addCartButtonCont'>
 
-        {stock === 0 ? <button className='addCartButton opacidad'> <img className='carritoadd' src={carritoadd} alt="" /> </button> : <button className='addCartButton' onClick={() => {
+        {stock === 0 || count === 0 ? <button className='addCartButton opacidad'> <img className='carritoadd' src={carritoadd} alt="" /> 
+        
+        </button> : <button className='addCartButton' onClick={() => {
           itemcount(); onAdd()
         }} > <img className='carritoadd' src={carritoadd} alt="" /> </button>}
 
